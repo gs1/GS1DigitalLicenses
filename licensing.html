@@ -6,7 +6,7 @@
     <h2>GS1 License Credentials</h2>
     <p><a href='#GS1-Licenses'>GS1 Licensing</a> provides the root of trust for the globally unique
         trade identification systems.
-        GS1 Licenses Credentials are digital representations of the existing GS1 Licenses described in <a href="#GS1-Licenses"></a>.  These licenses
+        GS1 License Credentials are digital representations of the existing GS1 Licenses described in <a href="#GS1-Licenses"></a>.  These licenses
         can be verified by machines in <abbr title="Business to Business">B2B</abbr>
         transactions. Why might digital verification of GS1 Licenses be beneficial?</p>
     <ul class="orange-bullets">
@@ -280,34 +280,31 @@
         </section>
         <section id="License-values">
         <h3>licenseValue</h3>
-        <p>Every license credential includes a <code>licenseValue</code>. The license credential type is usually sufficient to
-        define, together with the <code>licenseValue</code>, the “space” or “range” of the GS1 identification system
-        granted to the licensee. The exception to this is any license credential that has to do with a GS1
-        ID Key, which requires an GS1 ID Key type as an additional qualifier.
-        For license credentials that have to do with prefixes, the license value is in normalized GS1 (i.e.,
-        non-U.P.C.) form. Where the license credential is within the U.P.C. range, the alternative license
-        value holds the U.P.C. form.
-        For license credentials that have to do with GS1 ID Keys, the license value is the ID Key,
-        including the check digit or check characters if applicable, and excluding the serial component if
-        applicable. When the license is specifically for a GTIN, the license value is the GTIN in its minimum
-        format: GTIN-8, GTIN-12, GTIN-13 (which must not start with a zero), or GTIN-14 (which must
-        start with indicator digit 9). Where the license credential is for a GTIN-8, GTIN-12, or GTIN-13, the
-        alternative license value is the GTIN normalized to 13 digits (by padding with zeros on the left) and
-        with the check digit removed (resulting in a 12-digit string); this value is used when verifying a
-        GTIN with indicator digit 1-8 against a license.</p>
+        <p>A GS1 License Credentials MUST includes a <code>licenseValue</code>.
+
+        <p>For <code>GS1PrefixLicenseCredential</code>, <code>GS18PrefixLicenseCredential</code>,
+            <code>GS1CompanyPrefixLicenseCredential</code>, and <code>DelegatedGS1PrefixLicenseCredential</code>
+            the <code>licenseValue</code> is the GS1 Prefix Or GCP as specified in
+            <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4</a>.<p>
+
+        <p>For <code>GS1IdentificationKeyLicenseCredential</code> and <code>DelegatedGS1IdentificationKeyLicenseCredential</code>
+         the <code>licenseValue</code> contains the licensed GS1 ID Key in the canonical form specified in <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/standards/digital-link/uri-syntax/">GS1 Digital Link Standard Section 4.5</a>.<p>
         </section>
 
         <section id="alternate-License-values">
         <h3>alternativeLicenseValue</h3>
-        <p>Alternative value of the license.
-        For most licenses, the alternative value of
-        the license is the bridge between the
-        U.P.C. system and the rest of the GS1
-        system: if the license value starts with
-        zero, then the alternative license value is
-        the same as the license value but without
-        the leading zero.</p>
-        <p><span class="todo">TODO</span> we need more language on what this is.</p>
+        <p>A GS1 License Credential MAY include an <code>alternativeLicenseValue</code> which bridges
+        the canonical representations to compact representations for encoding into different symbologies. Typically
+        this is the bridge between the U.P.C. or EAN system and the rest of the GS1 system.</p>
+
+        <p><code>GS1PrefixLicenseCredential</code>, <code>GS18PrefixLicenseCredential</code>,
+            <code>GS1CompanyPrefixLicenseCredential</code>, and <code>DelegatedGS1PrefixLicenseCredential</code>
+              MAY contain an  <code>alternativeLicenseValue</code> If the <code>licenseValue</code> starts with zero, then the <code>alternativeLicenseValue</code> is equilvalent to the <code>licenseValue</code> but without the leading zero.</p>
+
+        <p>For <code>GS1IdentificationKeyLicenseCredential</code> and <code>DelegatedGS1IdentificationKeyLicenseCredential</code>
+            the <code>alternativeLicenseValue</code> MAY contain the compact form of the ID Key with leading zeros removed.</p>
+
+         <p>For example when licensing an individual GTIN in the United States an <code>GS1IdentificationKeyLicenseCredential</code> would contains a 14-digit  <code>licenseValue</code> and a 12-digit <code>alternativeLicenseValue</code>, where the two values are different by two leading zeros.</p>
 
         </section>
 

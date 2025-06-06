@@ -29,10 +29,7 @@
                 <ul>
                     <li><strong>P</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                     <li>The <code>issuer</code> of <strong>K</strong>  MUST match the subject of <strong>P</strong>.</li>
-                    <li><strong>PK</strong> MUST begin with (as a string) the <code>licenseValue</code> from <strong>P</strong>.
-                        <span class="todo">TODO</span>
-                        this isnt quite correct. For example a digital link always references the GTIN as 14 digits but the licenseValue could be from
-                        a GTIN 8 license credential in which case there are leading zeros.</li>
+                    <li><strong>PK</strong> MUST begin with (as a string) the <code>licenseValue</code> from <strong>P</strong>.</li>
                 </ul>
             <li>If <strong>D</strong> contains a GS1 Digital Link with primary Key <strong>PK</strong> and one or more key qualifiers:</li>
                 <ul>

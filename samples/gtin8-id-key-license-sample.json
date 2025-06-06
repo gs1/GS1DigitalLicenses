@@ -21,9 +21,9 @@
       "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
-    "extendsCredential": "https://id.gs1.org/vc/license/gs1_8_prefix/754",
-    "licenseValue": "07512345",
-    "alternativeLicenseValue": "00000007512345",
+    "extendsCredential": "https://id.gs1.org/vc/license/gs1_8_prefix/0000000751",
+    "licenseValue": "00000007512345",
+    "alternativeLicenseValue": "07512345",
     "identificationKeyType": "GTIN"
   },
   "credentialSchema": {
