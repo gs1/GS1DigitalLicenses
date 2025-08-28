@@ -5,10 +5,9 @@
   "title": "KeyCredential",
   "description": "This is the Verifiable Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid. When the key is retired (e.g., a product is withdrawn from the market or an asset is destroyed), the credential is revoked.",
   "type": "object",
-
   "$defs": {
-    "GS1DigitalLink" : {
-     "title": "GS1 Digital Link",
+    "GS1DigitalLink": {
+      "title": "GS1 Digital Link",
       "type": "string",
       "format": "uri",
       "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
@@ -55,7 +54,10 @@
           "type": "string"
         }
       },
-      "required": ["id", "type"]
+      "required": [
+        "id",
+        "type"
+      ]
     },
     "CredentialSchema": {
       "type": "object",
@@ -110,14 +112,23 @@
             "properties": {
               "status": {
                 "type": "string",
-                "enum": ["0x0", "0x1"]
+                "enum": [
+                  "0x0",
+                  "0x1"
+                ]
               },
               "message": {
                 "type": "string",
-                "enum": ["valid", "revoked"]
+                "enum": [
+                  "valid",
+                  "revoked"
+                ]
               }
             },
-            "required": ["status", "message"]
+            "required": [
+              "status",
+              "message"
+            ]
           }
         }
       },
@@ -152,16 +163,27 @@
       "description": "Date from which the credential is to be considered valid.",
       "type": "string",
       "format": "date-time"
-    },
+    }
   },
-"properties": {
+  "properties": {
     "@context": {
       "type": "array",
-      "items": { "type": "string", "format": "uri" },
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
       "allOf": [
-        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
-        { "contains": { "const": "https://ref.gs1.org/gs1/vc/declaration-context" } }
-      ],
+        {
+          "contains": {
+            "const": "https://www.w3.org/ns/credentials/v2"
+          }
+        },
+        {
+          "contains": {
+            "const": "https://ref.gs1.org/gs1/vc/declaration-context"
+          }
+        }
+      ]
     },
     "id": {
       "type": "string",
@@ -169,11 +191,21 @@
     },
     "type": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "allOf": [
-        { "contains": { "const": "VerifiableCredential" } },
-        { "contains": { "const": "KeyCredential" } }
-      ],
+        {
+          "contains": {
+            "const": "VerifiableCredential"
+          }
+        },
+        {
+          "contains": {
+            "const": "KeyCredential"
+          }
+        }
+      ]
     },
     "issuer": {
       "$ref": "#/$defs/Issuer"
@@ -182,10 +214,10 @@
       "$ref": "#/$defs/ValidFrom"
     },
     "name": {
-      "type": "string",
+      "type": "string"
     },
-    "description" : {
-      "type": "string",
+    "description": {
+      "type": "string"
     },
     "credentialSubject": {
       "type": "object",
@@ -206,34 +238,46 @@
     },
     "credentialSchema": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "$ref": "#/$defs/CredentialSchema"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "items": {
+            "$ref": "#/$defs/CredentialSchema"
+          },
           "minItems": 1
         }
       ]
     },
     "credentialStatus": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "$ref": "#/$defs/CredentialStatus"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "items": {
+            "$ref": "#/$defs/CredentialStatus"
+          },
           "minItems": 1
         }
       ]
     },
     "renderMethod": {
       "oneOf": [
-        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "$ref": "#/$defs/RenderMethod"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/RenderMethod" },
+          "items": {
+            "$ref": "#/$defs/RenderMethod"
+          },
           "minItems": 1
         }
       ]
-    },
+    }
   },
   "required": [
     "@context",
@@ -245,6 +289,6 @@
     "description",
     "credentialSubject",
     "credentialStatus",
-    "credentialSchema",
-  ],
+    "credentialSchema"
+  ]
 }

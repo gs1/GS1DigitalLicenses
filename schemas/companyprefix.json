@@ -6,8 +6,8 @@
   "description": "A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys",
   "type": "object",
   "$defs": {
-    "GS1DigitalLink" : {
-     "title": "GS1 Digital Link",
+    "GS1DigitalLink": {
+      "title": "GS1 Digital Link",
       "type": "string",
       "format": "uri",
       "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
@@ -54,7 +54,10 @@
           "type": "string"
         }
       },
-      "required": ["id", "type"]
+      "required": [
+        "id",
+        "type"
+      ]
     },
     "CredentialSchema": {
       "type": "object",
@@ -109,14 +112,23 @@
             "properties": {
               "status": {
                 "type": "string",
-                "enum": ["0x0", "0x1"]
+                "enum": [
+                  "0x0",
+                  "0x1"
+                ]
               },
               "message": {
                 "type": "string",
-                "enum": ["valid", "revoked"]
+                "enum": [
+                  "valid",
+                  "revoked"
+                ]
               }
             },
-            "required": ["status", "message"]
+            "required": [
+              "status",
+              "message"
+            ]
           }
         }
       },
@@ -151,16 +163,27 @@
       "description": "Date from which the credential is to be considered valid.",
       "type": "string",
       "format": "date-time"
-    },
+    }
   },
   "properties": {
     "@context": {
       "type": "array",
-      "items": { "type": "string", "format": "uri" },
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
       "allOf": [
-        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
-        { "contains": { "const": "https://ref.gs1.org/gs1/vc/license-context" } }
-      ],
+        {
+          "contains": {
+            "const": "https://www.w3.org/ns/credentials/v2"
+          }
+        },
+        {
+          "contains": {
+            "const": "https://ref.gs1.org/gs1/vc/license-context"
+          }
+        }
+      ]
     },
     "id": {
       "type": "string",
@@ -168,11 +191,21 @@
     },
     "type": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "allOf": [
-        { "contains": { "const": "VerifiableCredential" } },
-        { "contains": { "const": "GS1CompanyPrefixLicenseCredential" } }
-      ],
+        {
+          "contains": {
+            "const": "VerifiableCredential"
+          }
+        },
+        {
+          "contains": {
+            "const": "GS1CompanyPrefixLicenseCredential"
+          }
+        }
+      ]
     },
     "issuer": {
       "$ref": "#/$defs/Issuer"
@@ -181,15 +214,17 @@
       "$ref": "#/$defs/ValidFrom"
     },
     "name": {
-      "type": "string",
+      "type": "string"
     },
-    "description" : {
-      "type": "string",
+    "description": {
+      "type": "string"
     },
     "credentialSubject": {
       "type": "object",
       "properties": {
-        "id": { "$ref": "#/$defs/DID" },
+        "id": {
+          "$ref": "#/$defs/DID"
+        },
         "organization": {
           "$ref": "#/$defs/Organization"
         },
@@ -202,7 +237,7 @@
           "title": "GS1 Prefix Alternative License Value. This field is optional.",
           "type": "string"
         },
-        "extendsCredential" : {
+        "extendsCredential": {
           "type": "string",
           "format": "uri"
         }
@@ -216,34 +251,46 @@
     },
     "credentialSchema": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "$ref": "#/$defs/CredentialSchema"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "items": {
+            "$ref": "#/$defs/CredentialSchema"
+          },
           "minItems": 1
         }
       ]
     },
     "credentialStatus": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "$ref": "#/$defs/CredentialStatus"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "items": {
+            "$ref": "#/$defs/CredentialStatus"
+          },
           "minItems": 1
         }
       ]
     },
     "renderMethod": {
       "oneOf": [
-        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "$ref": "#/$defs/RenderMethod"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/RenderMethod" },
+          "items": {
+            "$ref": "#/$defs/RenderMethod"
+          },
           "minItems": 1
         }
       ]
-    },
+    }
   },
   "required": [
     "@context",
@@ -257,5 +304,5 @@
     "credentialStatus",
     "credentialSchema",
     "renderMethod"
-  ],
+  ]
 }

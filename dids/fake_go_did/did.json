@@ -8,29 +8,29 @@
   "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
   "verificationMethod": [
     {
-      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog",
+      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk",
       "type": "JsonWebKey",
       "controller": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
       "publicKeyJwk": {
-        "kid": "ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog",
+        "kid": "c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk",
         "alg": "ES256",
         "kty": "EC",
         "crv": "P-256",
-        "x": "q3pj90vWmp7uFTB8uMbXQGAvCLheDRH7DOxXH1UEOAg",
-        "y": "n1S_c8QGkTYrRmwhXpjzyYH6wF1a9ylrmD14qFAkeXE"
+        "x": "H7vrkn2nCVaUNJBCltk-s0i8JeT2LtQCllydhbl18Jg",
+        "y": "kz9ifBS9_a25pNRK-nAJ19-3TqljzcihuviCfNkPhx8"
       }
     }
   ],
   "authentication": [
-    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk"
   ],
   "assertionMethod": [
-    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk"
   ],
   "capabilityDelegation": [
-    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk"
   ],
   "capabilityInvocation": [
-    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did#c7RUnNhP_SZB2dezDuc0PQ4GsgSZTxEh0mcpH5q3NSk"
   ]
 }

@@ -5,10 +5,9 @@
   "title": "DataCredential",
   "description": "The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a GS1 ID Key.",
   "type": "object",
-
   "$defs": {
-    "GS1DigitalLink" : {
-     "title": "GS1 Digital Link",
+    "GS1DigitalLink": {
+      "title": "GS1 Digital Link",
       "type": "string",
       "format": "uri",
       "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
@@ -55,7 +54,10 @@
           "type": "string"
         }
       },
-      "required": ["id", "type"]
+      "required": [
+        "id",
+        "type"
+      ]
     },
     "CredentialSchema": {
       "type": "object",
@@ -110,14 +112,23 @@
             "properties": {
               "status": {
                 "type": "string",
-                "enum": ["0x0", "0x1"]
+                "enum": [
+                  "0x0",
+                  "0x1"
+                ]
               },
               "message": {
                 "type": "string",
-                "enum": ["valid", "revoked"]
+                "enum": [
+                  "valid",
+                  "revoked"
+                ]
               }
             },
-            "required": ["status", "message"]
+            "required": [
+              "status",
+              "message"
+            ]
           }
         }
       },
@@ -152,14 +163,17 @@
       "description": "Date from which the credential is to be considered valid.",
       "type": "string",
       "format": "date-time"
-    },
+    }
   },
-"properties": {
+  "properties": {
     "@context": {
       "type": "array",
       "items": {
         "oneOf": [
-          { "type": "string", "format": "uri" },
+          {
+            "type": "string",
+            "format": "uri"
+          },
           {
             "type": "object",
             "minProperties": 1,
@@ -168,9 +182,21 @@
         ]
       },
       "allOf": [
-        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
-        { "contains": { "const": "https://ref.gs1.org/gs1/vc/declaration-context" } },
-        { "contains": { "const": "https://ref.gs1.org/gs1/vc/product-context" } }
+        {
+          "contains": {
+            "const": "https://www.w3.org/ns/credentials/v2"
+          }
+        },
+        {
+          "contains": {
+            "const": "https://ref.gs1.org/gs1/vc/declaration-context"
+          }
+        },
+        {
+          "contains": {
+            "const": "https://ref.gs1.org/gs1/vc/product-context"
+          }
+        }
       ]
     },
     "id": {
@@ -179,12 +205,26 @@
     },
     "type": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "allOf": [
-        { "contains": { "const": "VerifiableCredential" } },
-        { "contains": { "const": "DataCredential" } },
-        { "contains": { "const": "AssetCredential" } }
-      ],
+        {
+          "contains": {
+            "const": "VerifiableCredential"
+          }
+        },
+        {
+          "contains": {
+            "const": "DataCredential"
+          }
+        },
+        {
+          "contains": {
+            "const": "AssetCredential"
+          }
+        }
+      ]
     },
     "issuer": {
       "$ref": "#/$defs/Issuer"
@@ -193,10 +233,10 @@
       "$ref": "#/$defs/ValidFrom"
     },
     "name": {
-      "type": "string",
+      "type": "string"
     },
-    "description" : {
-      "type": "string",
+    "description": {
+      "type": "string"
     },
     "credentialSubject": {
       "type": "object",
@@ -215,89 +255,147 @@
         "gs1:assetType": {
           "type": "object",
           "properties": {
-            "@id": { "type": "string", "format": "uri" },
-            "gs1:descriptionShort": { "type": "string" }
+            "@id": {
+              "type": "string",
+              "format": "uri"
+            },
+            "gs1:descriptionShort": {
+              "type": "string"
+            }
           },
-          "required": ["@id", "gs1:descriptionShort"],
+          "required": [
+            "@id",
+            "gs1:descriptionShort"
+          ]
         },
         "gs1:owner": {
           "type": "object",
           "properties": {
-            "@type": { "const": "gs1:Organization" },
+            "@type": {
+              "const": "gs1:Organization"
+            },
             "gs1:gln": {
               "type": "string",
               "pattern": "^[0-9]{13}$"
             }
           },
-          "required": ["@type", "gs1:gln"],
+          "required": [
+            "@type",
+            "gs1:gln"
+          ]
         },
         "gs1:hasLocation": {
           "type": "object",
           "properties": {
-            "@type": { "const": "gs1:Place" },
+            "@type": {
+              "const": "gs1:Place"
+            },
             "gs1:gln": {
               "type": "string",
               "pattern": "^[0-9]{13}$"
             },
-            "gs1:descriptionShort": { "type": "string" }
-          },
+            "gs1:descriptionShort": {
+              "type": "string"
+            }
+          }
         },
         "gs1:status": {
           "type": "object",
           "properties": {
-            "@id": { "type": "string", "format": "uri-reference" }
+            "@id": {
+              "type": "string",
+              "format": "uri-reference"
+            }
           },
-          "required": ["@id"],
+          "required": [
+            "@id"
+          ]
         },
-
-        "gs1:material": { "type": "string" },
-        "gs1:dimensionUnit": { "type": "string" },
-
+        "gs1:material": {
+          "type": "string"
+        },
+        "gs1:dimensionUnit": {
+          "type": "string"
+        },
         "gs1:depth": {
           "type": "object",
           "properties": {
-            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
-            "@type": { "const": "xsd:decimal" }
+            "@value": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]+)?$"
+            },
+            "@type": {
+              "const": "xsd:decimal"
+            }
           },
-          "required": ["@value", "@type"],
+          "required": [
+            "@value",
+            "@type"
+          ]
         },
         "gs1:width": {
           "type": "object",
           "properties": {
-            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
-            "@type": { "const": "xsd:decimal" }
+            "@value": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]+)?$"
+            },
+            "@type": {
+              "const": "xsd:decimal"
+            }
           },
-          "required": ["@value", "@type"],
+          "required": [
+            "@value",
+            "@type"
+          ]
         },
         "gs1:height": {
           "type": "object",
           "properties": {
-            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
-            "@type": { "const": "xsd:decimal" }
+            "@value": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]+)?$"
+            },
+            "@type": {
+              "const": "xsd:decimal"
+            }
           },
-          "required": ["@value", "@type"],
+          "required": [
+            "@value",
+            "@type"
+          ]
         },
-
         "gs1:grossWeight": {
           "type": "object",
           "properties": {
-            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
-            "@type": { "const": "xsd:decimal" }
+            "@value": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]+)?$"
+            },
+            "@type": {
+              "const": "xsd:decimal"
+            }
           },
-          "required": ["@value", "@type"],
+          "required": [
+            "@value",
+            "@type"
+          ]
         },
-
         "gs1:handlingInstructions": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "@value": { "type": "string" }
+              "@value": {
+                "type": "string"
+              }
             },
-            "required": ["@value"],
+            "required": [
+              "@value"
+            ]
           },
           "minItems": 1
-        },
+        }
       },
       "required": [
         "id",
@@ -312,39 +410,51 @@
         "gs1:width",
         "gs1:height",
         "gs1:grossWeight",
-        "gs1:handlingInstructions",
+        "gs1:handlingInstructions"
       ]
     },
     "credentialSchema": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "$ref": "#/$defs/CredentialSchema"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "items": {
+            "$ref": "#/$defs/CredentialSchema"
+          },
           "minItems": 1
         }
       ]
     },
     "credentialStatus": {
       "oneOf": [
-        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "$ref": "#/$defs/CredentialStatus"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "items": {
+            "$ref": "#/$defs/CredentialStatus"
+          },
           "minItems": 1
         }
       ]
     },
     "renderMethod": {
       "oneOf": [
-        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "$ref": "#/$defs/RenderMethod"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/RenderMethod" },
+          "items": {
+            "$ref": "#/$defs/RenderMethod"
+          },
           "minItems": 1
         }
       ]
-    },
+    }
   },
   "required": [
     "@context",
@@ -352,6 +462,6 @@
     "type",
     "issuer",
     "credentialSubject",
-    "credentialSchema",
-  ],
+    "credentialSchema"
+  ]
 }
