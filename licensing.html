@@ -53,13 +53,11 @@
           <div class="callout-icon">!</div>
           <div class="callout-text">
             <strong>Note:</strong>The GS1 numbering system is complex and there are abbreviated number forms that can omit leading zeros
-            in numbering This can sometimes make the GS1 Prefix and GCP matching complex.  (<span class="todo">TODO</span> put a link to some better
-            documentation) For example:
-            <ul class="orange-bullets">
-                <li>For 12-digit GTINs, and only 12-digit GTINs, there is an implied leading zero. For example, given the 12-digit GTIN 614141234561, the GS1 Prefix is 061, not 614. </li>
-            </ul>
+            in numbering This can sometimes make the GS1 Prefix and GCP matching complex.
           </div>
         </div>
+
+
     </section>
     <section id="License-Credentials">
         <h3>GS1 License Credentials Details</h3>
@@ -177,7 +175,6 @@
         <section id="license-credential-context">
             <h3>License Credential Context</h3>
             <p>The current GS1 License Context can be found at <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a>.</p>
-            <p><span class="todo">TODO</span> We need to convert this to 2.0 and keep the normative copy somewhere in souce control</p>
         </section>
 
         <section id="license-credential-types">
@@ -316,8 +313,18 @@
 
         <section id="delivery">
             <h3>Delivery</h3>
-            <p><span class="todo">confirm with Steering Committee</span> how <code>GS18PrefixLicenseCredential</code> and <code>GS1PrefixLicenseCredential</code>
-             GS1 Licenses Credentials are shared. I think we want to say that these licenses are available in XXX format via HTTP get on their credential IDs...</p>
+
+
+            <p><code>GS18PrefixLicenseCredential</code> and <code>GS1PrefixLicenseCredential</code> issued by GS1 Global Office are available in VC-JWT format via HTTP GET.  The URL format is
+            <code>https://ref.gs1.org/vc/prefix/{XX}</code> where <code>{XX}</code> is the license value.</p>
+
+            <div class="callout important">
+              <div class="callout-icon">!</div>
+              <div class="callout-text">
+                <strong>Note:</strong>This is currently under development.
+              </div>
+            </div>
+
             <p>Contact your MO for details on obtaining
              <code>GS1CompanyPrefixLicenseCredential</code> and <code>GS1IdentificationKeyLicenseCredential</code> License Credentials.</p>
         </section>
@@ -326,7 +333,13 @@
             <h3>VCDM Credential ID Property</h3>
             <p>The id property is optional in the VCDM, but MUST be present in GS1 License Credentials. This property SHOULD be chosen
             to be globally unique. Consideration should be given to revocation and re-issuance of credentials.</p>
-            <p><span class="todo">TODO</span>What can we state about the ID property of these credentials.  Should it be a URL etc.?</p>
+            <p>GS1 Global Office License credentials are identified with a credential ID property that is resolvable to the credential in VC-JWT format.</p>
+            <div class="callout important">
+              <div class="callout-icon">!</div>
+              <div class="callout-text">
+                <strong>Note:</strong>This is currently under development.
+              </div>
+            </div>
         </section>
         <section id="credential-subject-id">
             <h3>VCDM Credential Subject ID property</h3>
