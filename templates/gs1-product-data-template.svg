@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="370" viewBox="0 0 590 370">
+  <!-- GS1 orange outer decorative border -->
+  <rect x="5" y="5" width="580" height="360" rx="24" ry="24"
+        style="fill: none; stroke: #f36f21; stroke-width: 4; stroke-dasharray: 10 4;" />
+
+  <!-- Inner soft frame -->
+  <rect x="15" y="15" width="560" height="340" rx="12" ry="12"
+        style="fill: #fffdf8; stroke: #ccc; stroke-width: 1.5;" />
+
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="paper-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f5ef; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="15" y="15" width="560" height="340" rx="12" ry="12" fill="url(#paper-bg)" />
+
+  <!-- GS1 Logo -->
+  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
+         x="460" y="30" width="100" height="32" />
+
+  <!-- Credential Title -->
+  <text id="credential-name"
+        x="295" y="55"
+        text-anchor="middle"
+        style="font: bold 20px sans-serif; fill: #000;">
+    [CREDENTIAL NAME]
+  </text>
+
+  <!-- GS1 ID Key Digital Link -->
+  <text id="gs1-key-digital-link"
+        x="295" y="85"
+        text-anchor="middle"
+        style="font: 13px monospace; fill: #0057b8;">
+    [DIGITAL LINK]
+  </text>
+
+  <!-- Product Data Fields -->
+  <text x="30" y="110" style="font: bold 13px sans-serif; fill: #333;">Brand:</text>
+  <text x="210" y="110" id="brand-name" style="font: 13px monospace; fill: #0057b8;">[BRAND NAME]</text>
+
+  <text x="30" y="130" style="font: bold 13px sans-serif; fill: #333;">Product Description:</text>
+  <text x="210" y="130" id="product-description" style="font: 13px monospace; fill: #0057b8;">[PRODUCT DESCRIPTION]</text>
+
+  <text x="30" y="150" style="font: bold 13px sans-serif; fill: #333;">GPC Category Code:</text>
+  <text x="210" y="150" id="gpc-category-code" style="font: 13px monospace; fill: #0057b8;">[GPC CATEGORY CODE]</text>
+
+  <text x="30" y="170" style="font: bold 13px sans-serif; fill: #333;">Net Content:</text>
+  <text x="210" y="170" id="net-content" style="font: 13px monospace; fill: #0057b8;">
+    <tspan id="net-content-value">[NET CONTENT VALUE]</tspan> <tspan id="net-content-unit">[NET CONTENT UNIT]</tspan>
+  </text>
+
+  <text x="30" y="190" style="font: bold 13px sans-serif; fill: #333;">Target Markets:</text>
+  <text x="210" y="190" id="target-markets" style="font: 13px monospace; fill: #0057b8;">[TARGET MARKET CODES]</text>
+
+  <!-- Description block -->
+  <foreignObject x="30" y="210" width="530" height="90">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+      <p id="vc-description" style="
+        font-family: sans-serif;
+        font-size: 12px;
+        color: #333;
+        margin: 0;
+        line-height: 1.3em;
+      ">
+        [VC DESCRIPTION GOES HERE...]
+      </p>
+    </body>
+  </foreignObject>
+
+  <!-- Extends Credential -->
+  <text x="30" y="300" style="font: 13px sans-serif; fill: #333;">
+    <tspan style="font-weight: bold;">Extends:</tspan>
+  </text>
+  <text x="30" y="316" style="font: 10px monospace; fill: #0057b8;">
+    <tspan id="extendsCredential">[VALUE]</tspan>
+  </text>
+
+  <!-- Issuer: Right-aligned with underline only under value -->
+  <text id="issuer-label" x="560" y="320" text-anchor="end"
+        style="font: bold 13px sans-serif; fill: #333;">
+    Issuer:
+  </text>
+  <text id="issuer" x="560" y="336" text-anchor="end"
+        style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
+    [ISSUER]
+  </text>
+</svg>
