@@ -39,7 +39,7 @@
   "renderMethod": [
     {
       "id": "https://gs1.github.io/GS1DigitalLicenses/templates/gs1-sample-license-template.svg",
-      "type": "SvgRenderingTemplate",
+      "type": "SvgRenderingTemplate2023",
       "name": "Web Display",
       "css3MediaQuery": "@media (min-aspect-ratio: 3/1)"
     }
