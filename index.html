@@ -285,7 +285,7 @@ function addReferenceNumbers(doc, config) {
       const vc = await loadVC(vcUrl);
 
       const renderMethod = vc.renderMethod?.find(
-        (m) => m.type === "SvgRenderingTemplate"
+        (m) => m.type === "SvgRenderingTemplate2023"
       );
       if (!renderMethod?.id) return;
 
@@ -335,7 +335,7 @@ function addReferenceNumbers(doc, config) {
       const vc = await loadVC(vcUrl);
 
       const renderMethod = vc.renderMethod?.find(
-        (m) => m.type === "SvgRenderingTemplate"
+        (m) => m.type === "SvgRenderingTemplate2023"
       );
       if (!renderMethod?.id) return;
 
