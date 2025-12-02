@@ -72,6 +72,6 @@
   </text>
   <text id="issuer" x="560" y="336" text-anchor="end"
         style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
-    {{#/issuer/name}}{{/issuer/name}}{{/issuer/name}}{{^/issuer/name}}{{#/issuer/id}}{{/issuer/id}}{{/issuer/id}}{{^/issuer/id}}{{/issuer}}{{/issuer/id}}{{/issuer/name}}
+    {{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}
   </text>
 </svg>
