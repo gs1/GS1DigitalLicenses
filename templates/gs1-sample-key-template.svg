@@ -25,7 +25,7 @@
         x="295" y="55"
         text-anchor="middle"
         style="font: bold 20px sans-serif; fill: #000;">
-    [CREDENTIAL NAME]
+    {{/name}}
   </text>
 
   <!-- GS1 ID Key Digital Link -->
@@ -33,7 +33,7 @@
         x="295" y="85"
         text-anchor="middle"
         style="font: 13px monospace; fill: #0057b8;">
-    [credentialSubject.id]
+    {{/credentialSubject/id}}
   </text>
 
   <!-- Description block -->
@@ -46,7 +46,7 @@
         margin: 0;
         line-height: 1.3em;
       ">
-        [VC DESCRIPTION GOES HERE...]
+        {{/description}}
       </p>
     </body>
   </foreignObject>
@@ -56,7 +56,7 @@
     <tspan style="font-weight: bold;">Extends:</tspan>
   </text>
   <text x="30" y="306" style="font: 10px monospace; fill: #0057b8;">
-    <tspan id="extendsCredential">[VALUE]</tspan>
+    <tspan id="extendsCredential">{{/credentialSubject/extendsCredential}}</tspan>
   </text>
 
   <!-- Issuer: Label right-aligned, value underlined -->
@@ -64,9 +64,8 @@
         style="font: bold 13px sans-serif; fill: #333;">
     Issuer:
   </text>
-
   <text id="issuer" x="560" y="336" text-anchor="end"
         style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
-    [ISSUER]
+    {{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}
   </text>
 </svg>

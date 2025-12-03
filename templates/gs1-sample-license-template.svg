@@ -25,28 +25,25 @@
         x="295" y="55"
         text-anchor="middle"
         style="font: bold 20px sans-serif; fill: #000;">
-    [CREDENTIAL NAME]
+    {{/name}}
   </text>
-  <!-- Organization Info -->
-  <text x="30" y="80" style="font: bold 13px sans-serif; fill: #333;">Organization Name:</text>
-  <text x="210" y="80" id="org-name" style="font: 13px monospace; fill: #0057b8;">[ORG NAME]</text>
 
-  <text x="30" y="100" style="font: bold 13px sans-serif; fill: #333;">Organization GLN:</text>
-  <text x="210" y="100" id="org-gln" style="font: 13px monospace; fill: #0057b8;">[GLN]</text>
+  <!-- Organization Info -->
+  <text x="30" y="85" style="font: bold 13px sans-serif; fill: #333;">Organization Name:</text>
+  <text x="210" y="85" id="org-name" style="font: 13px monospace; fill: #0057b8;">{{/credentialSubject/organization/gs1:organizationName}}</text>
+
+  <text x="30" y="105" style="font: bold 13px sans-serif; fill: #333;">Organization GLN:</text>
+  <text x="210" y="105" id="org-gln" style="font: 13px monospace; fill: #0057b8;">{{/credentialSubject/organization/gs1:partyGLN}}</text>
 
   <!-- License Info -->
-  <text x="30" y="120" style="font: bold 13px sans-serif; fill: #333;">License Value:</text>
-  <text x="210" y="120" id="license-value" style="font: 13px monospace; fill: #0057b8;">[LICENSE]</text>
+  <text x="30" y="125" style="font: bold 13px sans-serif; fill: #333;">License Value:</text>
+  <text x="210" y="125" id="license-value" style="font: 13px monospace; fill: #0057b8;">{{/credentialSubject/licenseValue}}</text>
 
-  <text x="30" y="140" style="font: bold 13px sans-serif; fill: #333;">Alt License Value:</text>
-  <text x="210" y="140" id="alt-license-value" style="font: 13px monospace; fill: #0057b8;">[ALTERNATE]</text>
-
-  <!-- Identification Key Type -->
-  <text x="30" y="160" style="font: bold 13px sans-serif; fill: #333;">Identification Key Type:</text>
-  <text x="210" y="160" id="identificationKeyType" style="font: 13px monospace; fill: #0057b8;">N/A</text>
+  <text x="30" y="145" style="font: bold 13px sans-serif; fill: #333;">Alt License Value:</text>
+  <text x="210" y="145" id="alt-license-value" style="font: 13px monospace; fill: #0057b8;">{{/credentialSubject/alternativeLicenseValue}}</text>
 
   <!-- Description block -->
-  <foreignObject x="30" y="180" width="530" height="90">
+  <foreignObject x="30" y="165" width="530" height="110">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <p id="vc-description" style="
         font-family: sans-serif;
@@ -55,7 +52,7 @@
         margin: 0;
         line-height: 1.3em;
       ">
-        [VC DESCRIPTION GOES HERE...]
+        {{/description}}
       </p>
     </body>
   </foreignObject>
@@ -65,7 +62,7 @@
     <tspan style="font-weight: bold;">Extends:</tspan>
   </text>
   <text x="30" y="306" style="font: 10px monospace; fill: #0057b8;">
-    <tspan id="extendsCredential">[VALUE]</tspan>
+    <tspan id="extendsCredential">{{/credentialSubject/extendsCredential}}</tspan>
   </text>
 
   <!-- Issuer: Right-aligned with underline only under value -->
@@ -73,9 +70,8 @@
         style="font: bold 13px sans-serif; fill: #333;">
     Issuer:
   </text>
-
   <text id="issuer" x="560" y="336" text-anchor="end"
         style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
-    [ISSUER]
+    {{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}
   </text>
 </svg>
