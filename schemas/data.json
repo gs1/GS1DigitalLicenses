@@ -48,7 +48,7 @@
         },
         "type": {
           "type": "string",
-          "const": "SvgRenderingTemplate2023"
+          "const": "TemplateRenderMethod"
         },
         "name": {
           "type": "string"
