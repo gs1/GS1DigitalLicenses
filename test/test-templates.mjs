@@ -11,12 +11,12 @@ const templateMappings = {
   'gs1-sample-license-template.svg': [
     'gcp-sample.json',
     'gs1-prefix-license-sample.json',
-    'gln-key-credential-sample.json',
     'gtin8-id-key-license-sample.json',
     'gtin8-prefix-sample.json',
     'id-key-license-sample.json'
   ],
   'gs1-sample-key-template.svg': [
+    'gln-key-credential-sample.json',
     'gtin-key-credential-sample.json',
     'gtin-batch-key-credential-sample.json',
     'gtin-serial-key-credential-sample.json',
