@@ -1,0 +1,14 @@
+{
+  "name": "gs1-template-test",
+  "version": "1.0.0",
+  "description": "Test suite for GS1 Mustache templates",
+  "type": "module",
+  "scripts": {
+    "test": "node test-templates.mjs"
+  },
+  "dependencies": {
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {}
+}
+
