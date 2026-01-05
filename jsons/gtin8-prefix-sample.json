@@ -42,7 +42,8 @@
       "name": "Web Display",
       "template": {
         "id": "https://gs1.github.io/GS1DigitalLicenses/templates/gs1-sample-license-template.svg",
-        "mediaType": "image/svg+xml"
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiDhrg5zDwVuruOLy5g_do5SyRIobZp5pCsBv4XjI5m0xA"
       }
     }
   ]
