@@ -1,0 +1,352 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1600" viewBox="0 0 960 1600">
+  <!-- GS1 orange outer decorative border -->
+  <rect x="5" y="5" width="950" height="1590" rx="24" ry="24"
+        style="fill: none; stroke: #f36f21; stroke-width: 4; stroke-dasharray: 10 4;" />
+
+  <!-- Inner soft frame -->
+  <rect x="15" y="15" width="930" height="1570" rx="12" ry="12"
+        style="fill: #fffdf8; stroke: #ccc; stroke-width: 1.5;" />
+
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="paper-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f5ef; stop-opacity:1" />
+    </linearGradient>
+    
+    <style>
+      .section-card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .section-title {
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin: 0 0 8px 0;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #0057b8;
+      }
+      .section-description {
+        font-family: sans-serif;
+        font-size: 12px;
+        color: #666;
+        margin: 0 0 8px 0;
+        font-style: italic;
+      }
+      .attribute-row {
+        font-family: sans-serif;
+        font-size: 12px;
+        color: #333;
+        margin: 6px 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .attribute-title {
+        font-weight: 600;
+        color: #0057b8;
+        display: block;
+      }
+      .attribute-value {
+        color: #333;
+        display: block;
+        word-wrap: break-word;
+      }
+      .event-type-badge {
+        display: inline-block;
+        background: #0057b8;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .epc-item {
+        background: #f8f9fa;
+        border-left: 3px solid #0057b8;
+        padding: 6px 8px;
+        margin: 4px 0;
+        font-family: monospace;
+        font-size: 11px;
+        color: #333;
+      }
+      .transaction-item {
+        background: #fff9e6;
+        border-left: 3px solid #f36f21;
+        padding: 6px 8px;
+        margin: 4px 0;
+        font-size: 11px;
+      }
+      .transaction-type {
+        font-weight: bold;
+        color: #f36f21;
+      }
+    </style>
+  </defs>
+  <rect x="15" y="15" width="930" height="1570" rx="12" ry="12" fill="url(#paper-bg)" />
+
+  <!-- GS1 Logo -->
+  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
+         x="830" y="30" width="100" height="32" />
+
+  <!-- Event Title -->
+  <text id="event-type"
+        x="480" y="130"
+        text-anchor="middle"
+        style="font: bold 24px sans-serif; fill: #000;">
+    EPCIS {{/credentialSubject/epcis/type}}
+  </text>
+
+  <!-- Event Time -->
+  <text x="480" y="155"
+        text-anchor="middle"
+        style="font: 14px sans-serif; fill: #666;">
+    {{/credentialSubject/epcis/eventTime}} {{#/credentialSubject/epcis/eventTimeZoneOffset}}({{/credentialSubject/epcis/eventTimeZoneOffset}}){{//credentialSubject/epcis/eventTimeZoneOffset}}
+  </text>
+
+  <!-- Event ID -->
+  {{#/credentialSubject/epcis/eventID}}
+  <text x="30" y="190" style="font: bold 14px sans-serif; fill: #333;">Event ID:</text>
+  <text x="200" y="190" style="font: 12px monospace; fill: #0057b8;">{{/credentialSubject/epcis/eventID}}</text>
+  {{//credentialSubject/epcis/eventID}}
+
+  <!-- Extends Credential -->
+  <text x="30" y="210" style="font: bold 13px sans-serif; fill: #333;">Extends:</text>
+  <text x="200" y="210" style="font: 10px monospace; fill: #0057b8;">{{/credentialSubject/keyAuthorization}}</text>
+
+  <!-- Issuer -->
+  <text x="30" y="230" style="font: bold 13px sans-serif; fill: #333;">Issuer:</text>
+  <text x="200" y="230" style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">{{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}</text>
+
+  <!-- Horizontal divider -->
+  <line x1="30" y1="245" x2="930" y2="245" style="stroke: #ddd; stroke-width: 1;" />
+
+  <!-- Event Details -->
+  <foreignObject x="30" y="255" width="900" height="1325">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+      <div style="
+        overflow-y: auto;
+        max-height: 1325px;
+        font-family: sans-serif;
+      ">
+        
+        <!-- Core Event Information -->
+        <div class="section-card">
+          <h3 class="section-title">Event Information</h3>
+          
+          <div class="attribute-row">
+            <span class="attribute-title">Event Type:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/type}}</span>
+          </div>
+          
+          {{#/credentialSubject/epcis/action}}
+          <div class="attribute-row">
+            <span class="attribute-title">Action:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/action}}</span>
+          </div>
+          {{//credentialSubject/epcis/action}}
+          
+          {{#/credentialSubject/epcis/bizStep}}
+          <div class="attribute-row">
+            <span class="attribute-title">Business Step:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/bizStep}}</span>
+          </div>
+          {{//credentialSubject/epcis/bizStep}}
+          
+          {{#/credentialSubject/epcis/disposition}}
+          <div class="attribute-row">
+            <span class="attribute-title">Disposition:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/disposition}}</span>
+          </div>
+          {{//credentialSubject/epcis/disposition}}
+        </div>
+
+        <!-- Location Information -->
+        {{#/credentialSubject/epcis/readPoint}}
+        <div class="section-card">
+          <h3 class="section-title">Read Point</h3>
+          <div class="attribute-row">
+            <span class="attribute-value">{{#/credentialSubject/epcis/readPoint/id}}{{/credentialSubject/epcis/readPoint/id}}{{//credentialSubject/epcis/readPoint/id}}{{^/credentialSubject/epcis/readPoint/id}}{{/credentialSubject/epcis/readPoint}}{{//credentialSubject/epcis/readPoint/id}}</span>
+          </div>
+        </div>
+        {{//credentialSubject/epcis/readPoint}}
+
+        {{#/credentialSubject/epcis/bizLocation}}
+        <div class="section-card">
+          <h3 class="section-title">Business Location</h3>
+          <div class="attribute-row">
+            <span class="attribute-value">{{#/credentialSubject/epcis/bizLocation/id}}{{/credentialSubject/epcis/bizLocation/id}}{{//credentialSubject/epcis/bizLocation/id}}{{^/credentialSubject/epcis/bizLocation/id}}{{/credentialSubject/epcis/bizLocation}}{{//credentialSubject/epcis/bizLocation/id}}</span>
+          </div>
+        </div>
+        {{//credentialSubject/epcis/bizLocation}}
+
+        <!-- EPC List (ObjectEvent, TransactionEvent) -->
+        {{#/credentialSubject/epcis/epcList}}
+        <div class="section-card">
+          <h3 class="section-title">EPCs</h3>
+          {{#/credentialSubject/epcis/epcList}}
+          <div class="epc-item">{{/credentialSubject/epcis/epcList}}</div>
+          {{//credentialSubject/epcis/epcList}}
+        </div>
+        {{//credentialSubject/epcis/epcList}}
+
+        <!-- Parent ID and Child EPCs (AggregationEvent, AssociationEvent) -->
+        {{#/credentialSubject/epcis/parentID}}
+        <div class="section-card">
+          <h3 class="section-title">Parent ID</h3>
+          <div class="epc-item">{{/credentialSubject/epcis/parentID}}</div>
+        </div>
+        {{//credentialSubject/epcis/parentID}}
+
+        {{#/credentialSubject/epcis/childEPCs}}
+        <div class="section-card">
+          <h3 class="section-title">Child EPCs</h3>
+          {{#/credentialSubject/epcis/childEPCs}}
+          <div class="epc-item">{{/credentialSubject/epcis/childEPCs}}</div>
+          {{//credentialSubject/epcis/childEPCs}}
+        </div>
+        {{//credentialSubject/epcis/childEPCs}}
+
+        <!-- Quantity List -->
+        {{#/credentialSubject/epcis/quantityList}}
+        <div class="section-card">
+          <h3 class="section-title">Quantity</h3>
+          {{#/credentialSubject/epcis/quantityList}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/quantityList/epcClass}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/quantityList/quantity}} {{#/credentialSubject/epcis/quantityList/uom}}{{/credentialSubject/epcis/quantityList/uom}}{{//credentialSubject/epcis/quantityList/uom}}</span>
+          </div>
+          {{//credentialSubject/epcis/quantityList}}
+        </div>
+        {{//credentialSubject/epcis/quantityList}}
+
+        <!-- Business Transactions -->
+        {{#/credentialSubject/epcis/bizTransactionList}}
+        <div class="section-card">
+          <h3 class="section-title">Business Transactions</h3>
+          {{#/credentialSubject/epcis/bizTransactionList}}
+          <div class="transaction-item">
+            <span class="transaction-type">{{/credentialSubject/epcis/bizTransactionList/type}}:</span> {{/credentialSubject/epcis/bizTransactionList/bizTransaction}}
+          </div>
+          {{//credentialSubject/epcis/bizTransactionList}}
+        </div>
+        {{//credentialSubject/epcis/bizTransactionList}}
+
+        <!-- Source List -->
+        {{#/credentialSubject/epcis/sourceList}}
+        <div class="section-card">
+          <h3 class="section-title">Sources</h3>
+          {{#/credentialSubject/epcis/sourceList}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/sourceList/type}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/sourceList/source}}</span>
+          </div>
+          {{//credentialSubject/epcis/sourceList}}
+        </div>
+        {{//credentialSubject/epcis/sourceList}}
+
+        <!-- Destination List -->
+        {{#/credentialSubject/epcis/destinationList}}
+        <div class="section-card">
+          <h3 class="section-title">Destinations</h3>
+          {{#/credentialSubject/epcis/destinationList}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/destinationList/type}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/destinationList/destination}}</span>
+          </div>
+          {{//credentialSubject/epcis/destinationList}}
+        </div>
+        {{//credentialSubject/epcis/destinationList}}
+
+        <!-- Input (TransformationEvent) -->
+        {{#/credentialSubject/epcis/inputEPCList}}
+        <div class="section-card">
+          <h3 class="section-title">Input EPCs</h3>
+          {{#/credentialSubject/epcis/inputEPCList}}
+          <div class="epc-item">{{/credentialSubject/epcis/inputEPCList}}</div>
+          {{//credentialSubject/epcis/inputEPCList}}
+        </div>
+        {{//credentialSubject/epcis/inputEPCList}}
+
+        {{#/credentialSubject/epcis/inputQuantityList}}
+        <div class="section-card">
+          <h3 class="section-title">Input Quantity</h3>
+          {{#/credentialSubject/epcis/inputQuantityList}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/inputQuantityList/epcClass}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/inputQuantityList/quantity}} {{#/credentialSubject/epcis/inputQuantityList/uom}}{{/credentialSubject/epcis/inputQuantityList/uom}}{{//credentialSubject/epcis/inputQuantityList/uom}}</span>
+          </div>
+          {{//credentialSubject/epcis/inputQuantityList}}
+        </div>
+        {{//credentialSubject/epcis/inputQuantityList}}
+
+        <!-- Output (TransformationEvent) -->
+        {{#/credentialSubject/epcis/outputEPCList}}
+        <div class="section-card">
+          <h3 class="section-title">Output EPCs</h3>
+          {{#/credentialSubject/epcis/outputEPCList}}
+          <div class="epc-item">{{/credentialSubject/epcis/outputEPCList}}</div>
+          {{//credentialSubject/epcis/outputEPCList}}
+        </div>
+        {{//credentialSubject/epcis/outputEPCList}}
+
+        {{#/credentialSubject/epcis/outputQuantityList}}
+        <div class="section-card">
+          <h3 class="section-title">Output Quantity</h3>
+          {{#/credentialSubject/epcis/outputQuantityList}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/outputQuantityList/epcClass}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/outputQuantityList/quantity}} {{#/credentialSubject/epcis/outputQuantityList/uom}}{{/credentialSubject/epcis/outputQuantityList/uom}}{{//credentialSubject/epcis/outputQuantityList/uom}}</span>
+          </div>
+          {{//credentialSubject/epcis/outputQuantityList}}
+        </div>
+        {{//credentialSubject/epcis/outputQuantityList}}
+
+        <!-- Transformation ID -->
+        {{#/credentialSubject/epcis/transformationID}}
+        <div class="section-card">
+          <h3 class="section-title">Transformation ID</h3>
+          <div class="attribute-row">
+            <span class="attribute-value">{{/credentialSubject/epcis/transformationID}}</span>
+          </div>
+        </div>
+        {{//credentialSubject/epcis/transformationID}}
+
+        <!-- ILMD (Instance/Lot Master Data) -->
+        {{#/credentialSubject/epcis/ilmd}}
+        <div class="section-card">
+          <h3 class="section-title">Instance/Lot Master Data</h3>
+          {{#/credentialSubject/epcis/ilmd}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/ilmd/name}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/ilmd/value}}</span>
+          </div>
+          {{//credentialSubject/epcis/ilmd}}
+        </div>
+        {{//credentialSubject/epcis/ilmd}}
+
+        <!-- Custom Extensions -->
+        {{#/credentialSubject/epcis/extensions}}
+        <div class="section-card">
+          <h3 class="section-title">{{/credentialSubject/epcis/extensions/title}}</h3>
+          <p class="section-description">{{/credentialSubject/epcis/extensions/description}}</p>
+          {{#/credentialSubject/epcis/extensions/attributes}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{/credentialSubject/epcis/extensions/attributes/name}}:</span>
+            <span class="attribute-value">{{/credentialSubject/epcis/extensions/attributes/value}}</span>
+          </div>
+          {{//credentialSubject/epcis/extensions/attributes}}
+        </div>
+        {{//credentialSubject/epcis/extensions}}
+
+      </div>
+    </body>
+  </foreignObject>
+
+</svg>
