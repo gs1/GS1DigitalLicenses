@@ -190,9 +190,9 @@
         {{#/credentialSubject/epcis/epcList}}
         <div class="section-card">
           <h3 class="section-title">EPCs</h3>
-          {{#/credentialSubject/epcis/epcList}}
-          <div class="epc-item">{{/credentialSubject/epcis/epcList}}</div>
-          {{//credentialSubject/epcis/epcList}}
+          {{#.}}
+          <div class="epc-item">{{.}}</div>
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/epcList}}
 
@@ -207,22 +207,34 @@
         {{#/credentialSubject/epcis/childEPCs}}
         <div class="section-card">
           <h3 class="section-title">Child EPCs</h3>
-          {{#/credentialSubject/epcis/childEPCs}}
-          <div class="epc-item">{{/credentialSubject/epcis/childEPCs}}</div>
-          {{//credentialSubject/epcis/childEPCs}}
+          {{#.}}
+          <div class="epc-item">{{.}}</div>
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/childEPCs}}
+
+        {{#/credentialSubject/epcis/childQuantityList}}
+        <div class="section-card">
+          <h3 class="section-title">Child Quantity</h3>
+          {{#.}}
+          <div class="attribute-row">
+            <span class="attribute-title">{{epcClass}}:</span>
+            <span class="attribute-value">{{quantity}} {{#uom}}{{uom}}{{/uom}}</span>
+          </div>
+          {{/.}}
+        </div>
+        {{//credentialSubject/epcis/childQuantityList}}
 
         <!-- Quantity List -->
         {{#/credentialSubject/epcis/quantityList}}
         <div class="section-card">
           <h3 class="section-title">Quantity</h3>
-          {{#/credentialSubject/epcis/quantityList}}
+          {{#.}}
           <div class="attribute-row">
-            <span class="attribute-title">{{/credentialSubject/epcis/quantityList/epcClass}}:</span>
-            <span class="attribute-value">{{/credentialSubject/epcis/quantityList/quantity}} {{#/credentialSubject/epcis/quantityList/uom}}{{/credentialSubject/epcis/quantityList/uom}}{{//credentialSubject/epcis/quantityList/uom}}</span>
+            <span class="attribute-title">{{epcClass}}:</span>
+            <span class="attribute-value">{{quantity}} {{#uom}}{{uom}}{{/uom}}</span>
           </div>
-          {{//credentialSubject/epcis/quantityList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/quantityList}}
 
@@ -230,11 +242,11 @@
         {{#/credentialSubject/epcis/bizTransactionList}}
         <div class="section-card">
           <h3 class="section-title">Business Transactions</h3>
-          {{#/credentialSubject/epcis/bizTransactionList}}
+          {{#.}}
           <div class="transaction-item">
-            <span class="transaction-type">{{/credentialSubject/epcis/bizTransactionList/type}}:</span> {{/credentialSubject/epcis/bizTransactionList/bizTransaction}}
+            <span class="transaction-type">{{type}}:</span> {{bizTransaction}}
           </div>
-          {{//credentialSubject/epcis/bizTransactionList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/bizTransactionList}}
 
@@ -242,12 +254,12 @@
         {{#/credentialSubject/epcis/sourceList}}
         <div class="section-card">
           <h3 class="section-title">Sources</h3>
-          {{#/credentialSubject/epcis/sourceList}}
+          {{#.}}
           <div class="attribute-row">
-            <span class="attribute-title">{{/credentialSubject/epcis/sourceList/type}}:</span>
-            <span class="attribute-value">{{/credentialSubject/epcis/sourceList/source}}</span>
+            <span class="attribute-title">{{type}}:</span>
+            <span class="attribute-value">{{source}}</span>
           </div>
-          {{//credentialSubject/epcis/sourceList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/sourceList}}
 
@@ -255,12 +267,12 @@
         {{#/credentialSubject/epcis/destinationList}}
         <div class="section-card">
           <h3 class="section-title">Destinations</h3>
-          {{#/credentialSubject/epcis/destinationList}}
+          {{#.}}
           <div class="attribute-row">
-            <span class="attribute-title">{{/credentialSubject/epcis/destinationList/type}}:</span>
-            <span class="attribute-value">{{/credentialSubject/epcis/destinationList/destination}}</span>
+            <span class="attribute-title">{{type}}:</span>
+            <span class="attribute-value">{{destination}}</span>
           </div>
-          {{//credentialSubject/epcis/destinationList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/destinationList}}
 
@@ -268,21 +280,21 @@
         {{#/credentialSubject/epcis/inputEPCList}}
         <div class="section-card">
           <h3 class="section-title">Input EPCs</h3>
-          {{#/credentialSubject/epcis/inputEPCList}}
-          <div class="epc-item">{{/credentialSubject/epcis/inputEPCList}}</div>
-          {{//credentialSubject/epcis/inputEPCList}}
+          {{#.}}
+          <div class="epc-item">{{.}}</div>
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/inputEPCList}}
 
         {{#/credentialSubject/epcis/inputQuantityList}}
         <div class="section-card">
           <h3 class="section-title">Input Quantity</h3>
-          {{#/credentialSubject/epcis/inputQuantityList}}
+          {{#.}}
           <div class="attribute-row">
-            <span class="attribute-title">{{/credentialSubject/epcis/inputQuantityList/epcClass}}:</span>
-            <span class="attribute-value">{{/credentialSubject/epcis/inputQuantityList/quantity}} {{#/credentialSubject/epcis/inputQuantityList/uom}}{{/credentialSubject/epcis/inputQuantityList/uom}}{{//credentialSubject/epcis/inputQuantityList/uom}}</span>
+            <span class="attribute-title">{{epcClass}}:</span>
+            <span class="attribute-value">{{quantity}} {{#uom}}{{uom}}{{/uom}}</span>
           </div>
-          {{//credentialSubject/epcis/inputQuantityList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/inputQuantityList}}
 
@@ -290,21 +302,21 @@
         {{#/credentialSubject/epcis/outputEPCList}}
         <div class="section-card">
           <h3 class="section-title">Output EPCs</h3>
-          {{#/credentialSubject/epcis/outputEPCList}}
-          <div class="epc-item">{{/credentialSubject/epcis/outputEPCList}}</div>
-          {{//credentialSubject/epcis/outputEPCList}}
+          {{#.}}
+          <div class="epc-item">{{.}}</div>
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/outputEPCList}}
 
         {{#/credentialSubject/epcis/outputQuantityList}}
         <div class="section-card">
           <h3 class="section-title">Output Quantity</h3>
-          {{#/credentialSubject/epcis/outputQuantityList}}
+          {{#.}}
           <div class="attribute-row">
-            <span class="attribute-title">{{/credentialSubject/epcis/outputQuantityList/epcClass}}:</span>
-            <span class="attribute-value">{{/credentialSubject/epcis/outputQuantityList/quantity}} {{#/credentialSubject/epcis/outputQuantityList/uom}}{{/credentialSubject/epcis/outputQuantityList/uom}}{{//credentialSubject/epcis/outputQuantityList/uom}}</span>
+            <span class="attribute-title">{{epcClass}}:</span>
+            <span class="attribute-value">{{quantity}} {{#uom}}{{uom}}{{/uom}}</span>
           </div>
-          {{//credentialSubject/epcis/outputQuantityList}}
+          {{/.}}
         </div>
         {{//credentialSubject/epcis/outputQuantityList}}
 
