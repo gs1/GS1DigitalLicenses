@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1600" viewBox="0 0 960 1600">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500">
   <!-- GS1 orange outer decorative border -->
-  <rect x="5" y="5" width="950" height="1590" rx="24" ry="24"
+  <rect x="5" y="5" width="950" height="490" rx="24" ry="24"
         style="fill: none; stroke: #f36f21; stroke-width: 4; stroke-dasharray: 10 4;" />
 
   <!-- Inner soft frame -->
-  <rect x="15" y="15" width="930" height="1570" rx="12" ry="12"
+  <rect x="15" y="15" width="930" height="470" rx="12" ry="12"
         style="fill: #fffdf8; stroke: #ccc; stroke-width: 1.5;" />
 
   <!-- Background gradient -->
@@ -89,7 +89,7 @@
       }
     </style>
   </defs>
-  <rect x="15" y="15" width="930" height="1570" rx="12" ry="12" fill="url(#paper-bg)" />
+  <rect x="15" y="15" width="930" height="470" rx="12" ry="12" fill="url(#paper-bg)" />
 
   <!-- GS1 Logo -->
   <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
@@ -97,42 +97,40 @@
 
   <!-- Event Title -->
   <text id="event-type"
-        x="480" y="130"
+        x="480" y="55"
         text-anchor="middle"
-        style="font: bold 24px sans-serif; fill: #000;">
+        style="font: bold 20px sans-serif; fill: #000;">
     EPCIS {{/credentialSubject/epcis/type}}
   </text>
 
   <!-- Event Time -->
-  <text x="480" y="155"
+  <text x="480" y="75"
         text-anchor="middle"
-        style="font: 14px sans-serif; fill: #666;">
+        style="font: 12px sans-serif; fill: #666;">
     {{/credentialSubject/epcis/eventTime}} {{#/credentialSubject/epcis/eventTimeZoneOffset}}({{/credentialSubject/epcis/eventTimeZoneOffset}}){{//credentialSubject/epcis/eventTimeZoneOffset}}
   </text>
 
-  <!-- Event ID -->
-  {{#/credentialSubject/epcis/eventID}}
-  <text x="30" y="190" style="font: bold 14px sans-serif; fill: #333;">Event ID:</text>
-  <text x="200" y="190" style="font: 12px monospace; fill: #0057b8;">{{/credentialSubject/epcis/eventID}}</text>
-  {{//credentialSubject/epcis/eventID}}
+  <!-- Subject -->
+  <text x="30" y="100" style="font: bold 13px sans-serif; fill: #333;">Subject:</text>
+  <text x="100" y="100" style="font: 11px monospace; fill: #0057b8;">{{/credentialSubject/id}}</text>
 
   <!-- Extends Credential -->
-  <text x="30" y="210" style="font: bold 13px sans-serif; fill: #333;">Extends:</text>
-  <text x="200" y="210" style="font: 10px monospace; fill: #0057b8;">{{/credentialSubject/keyAuthorization}}</text>
+  <text x="30" y="120" style="font: bold 13px sans-serif; fill: #333;">Extends:</text>
+  <text x="100" y="120" style="font: 10px monospace; fill: #0057b8;">{{/credentialSubject/keyAuthorization}}</text>
 
   <!-- Issuer -->
-  <text x="30" y="230" style="font: bold 13px sans-serif; fill: #333;">Issuer:</text>
-  <text x="200" y="230" style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">{{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}</text>
+  <text x="30" y="140" style="font: bold 13px sans-serif; fill: #333;">Issuer:</text>
+  <text x="100" y="140" style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">{{#/issuer/name}}{{/issuer/name}}{{//issuer/name}}{{^/issuer/name}}{{/issuer}}{{//issuer/name}}</text>
 
   <!-- Horizontal divider -->
-  <line x1="30" y1="245" x2="930" y2="245" style="stroke: #ddd; stroke-width: 1;" />
+  <line x1="30" y1="155" x2="930" y2="155" style="stroke: #ddd; stroke-width: 1;" />
 
   <!-- Event Details -->
-  <foreignObject x="30" y="255" width="900" height="1325">
+  <foreignObject x="30" y="165" width="900" height="320">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <div style="
         overflow-y: auto;
-        max-height: 1325px;
+        max-height: 320px;
         font-family: sans-serif;
       ">
         
