@@ -39,24 +39,46 @@
     },
     "RenderMethod": {
       "type": "object",
-      "description": "Rendering support",
+      "description": "Rendering support following W3C VC Render Method specification",
       "properties": {
-        "id": {
-          "title": "Render Method Id",
-          "type": "string",
-          "format": "uri"
-        },
         "type": {
           "type": "string",
           "const": "TemplateRenderMethod"
         },
+        "renderSuite": {
+          "type": "string",
+          "description": "The rendering suite identifier"
+        },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Human-readable name for the render method"
+        },
+        "template": {
+          "type": "object",
+          "description": "Template information",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL to the template file"
+            },
+            "mediaType": {
+              "type": "string",
+              "description": "MIME type of the template"
+            },
+            "digestMultibase": {
+              "type": "string",
+              "description": "Multibase-encoded digest of the template for integrity verification"
+            }
+          },
+          "required": [
+            "id"
+          ]
         }
       },
       "required": [
-        "id",
-        "type"
+        "type",
+        "template"
       ]
     },
     "CredentialSchema": {
