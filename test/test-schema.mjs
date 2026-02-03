@@ -89,6 +89,70 @@ const credentialTests = [
   }
 ];
 
+// Negative test cases - these should fail validation
+const negativeTests = [
+  {
+    name: 'GLN Key Credential - Invalid Digital Link',
+    file: 'gln-key-credential-sample.json',
+    schemas: ['key.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'https://invalid-url.com/not-a-digital-link';
+      return credential;
+    },
+    expectedError: 'pattern'
+  },
+  {
+    name: 'GTIN Key Credential - Invalid Digital Link',
+    file: 'gtin-key-credential-sample.json',
+    schemas: ['key.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'http://example.com/invalid';
+      return credential;
+    },
+    expectedError: 'pattern'
+  },
+  {
+    name: 'GTIN Batch Key Credential - Invalid Digital Link',
+    file: 'gtin-batch-key-credential-sample.json',
+    schemas: ['key.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'https://id.gs1.org/invalid/path';
+      return credential;
+    },
+    expectedError: 'pattern'
+  },
+  {
+    name: 'GTIN Serial Key Credential - Invalid Digital Link',
+    file: 'gtin-serial-key-credential-sample.json',
+    schemas: ['key.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'not-even-a-url';
+      return credential;
+    },
+    expectedError: 'pattern'
+  },
+  {
+    name: 'GRAI Key Credential - Invalid Digital Link',
+    file: 'grai-key-credential-sample.json',
+    schemas: ['key.json', 'custom_asset.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'https://id.gs1.org/99/12345';
+      return credential;
+    },
+    expectedError: 'pattern'
+  },
+  {
+    name: 'SSCC Key Credential - Invalid Digital Link',
+    file: 'sscc-key-credential-sample.json',
+    schemas: ['key.json', 'custom_shipment.json'],
+    mutation: (credential) => {
+      credential.credentialSubject.id = 'https://example.com';
+      return credential;
+    },
+    expectedError: 'pattern'
+  }
+];
+
 const schemasDir = path.join(__dirname, '../schemas');
 const jsonsDir = path.join(__dirname, '../jsons');
 
@@ -165,7 +229,7 @@ function validateCredential(credential, schema, options = {}) {
 }
 
 /**
- * Run tests
+ * Run positive tests (valid credentials should pass)
  */
 async function runTests() {
   for (const test of credentialTests) {
@@ -267,9 +331,103 @@ async function runTests() {
   }
 }
 
+/**
+ * Run negative tests (invalid credentials should fail)
+ */
+async function runNegativeTests() {
+  console.log('\n' + '='.repeat(60));
+  console.log('\n🚫 Running Negative Tests (Expected to Fail)\n');
+  console.log('='.repeat(60));
+  
+  for (const test of negativeTests) {
+    console.log(`\n📄 ${test.name}`);
+    console.log(`   File: ${test.file}`);
+    console.log(`   Expected Error: ${test.expectedError}`);
+    
+    try {
+      // Load the credential
+      console.log(`   📂 Loading credential...`);
+      const credential = loadCredential(test.file);
+      
+      // Apply mutation to make it invalid
+      console.log(`   🔧 Applying mutation to invalidate credential...`);
+      const mutatedCredential = test.mutation(JSON.parse(JSON.stringify(credential)));
+      console.log(`   ✅ Mutation applied`);
+      
+      // Try each schema
+      for (const schemaName of test.schemas) {
+        totalTests++;
+        const testName = `${test.name} -> ${schemaName}`;
+        
+        try {
+          console.log(`   🔍 Validating against ${schemaName}...`);
+          
+          // Load schema
+          const schema = loadSchema(schemaName);
+          
+          // Validate
+          const result = validateCredential(mutatedCredential, schema);
+          
+          if (result.valid) {
+            // This is WRONG - the mutated credential should NOT validate
+            console.log(`   ❌ FAILED: Credential validated but should have failed!`);
+            failedTests++;
+            errors.push({
+              test: testName,
+              error: 'Negative test failed: Invalid credential passed validation',
+              details: 'Expected validation to fail but it passed'
+            });
+          } else {
+            // This is CORRECT - the mutated credential should fail validation
+            const hasExpectedError = result.errors.some(err => err.keyword === test.expectedError);
+            
+            if (hasExpectedError) {
+              console.log(`   ✅ PASSED: Credential correctly failed validation with expected error`);
+              console.log(`      Found ${result.errors.length} validation errors including expected '${test.expectedError}' error`);
+              passedTests++;
+            } else {
+              console.log(`   ⚠️  PARTIAL: Credential failed but without expected error type`);
+              console.log(`      Expected error: '${test.expectedError}'`);
+              console.log(`      Actual errors: ${result.errors.map(e => e.keyword).join(', ')}`);
+              passedTests++;
+            }
+          }
+          
+        } catch (error) {
+          console.log(`   ❌ Error during negative test: ${error.message}`);
+          failedTests++;
+          errors.push({
+            test: testName,
+            error: error.message,
+            stack: error.stack
+          });
+        }
+      }
+      
+    } catch (error) {
+      console.log(`   ❌ Failed to load or mutate credential`);
+      console.log(`      Error: ${error.message}`);
+      
+      // Count as failed for all schemas
+      test.schemas.forEach(schemaName => {
+        totalTests++;
+        failedTests++;
+        errors.push({
+          test: `${test.name} -> ${schemaName}`,
+          error: `Failed to load or mutate credential: ${error.message}`
+        });
+      });
+    }
+  }
+}
+
 // Run tests and display summary
 try {
+  // Run positive tests (valid credentials should pass)
   await runTests();
+  
+  // Run negative tests (invalid credentials should fail)
+  await runNegativeTests();
   
   // Summary
   console.log('\n' + '='.repeat(60));
@@ -283,6 +441,7 @@ try {
     
     const criticalErrors = errors.filter(e => e.requiredErrorCount > 0);
     const minorErrors = errors.filter(e => e.requiredErrorCount === 0);
+    const negativeTestErrors = errors.filter(e => e.test.includes('Invalid Digital Link'));
     
     if (criticalErrors.length > 0) {
       console.log(`\n❌ Critical (Missing Required Fields): ${criticalErrors.length} tests`);
@@ -298,9 +457,17 @@ try {
       });
     }
     
+    if (negativeTestErrors.length > 0) {
+      console.log(`\n🚫 Negative Test Failures: ${negativeTestErrors.length} tests`);
+      negativeTestErrors.forEach((err, idx) => {
+        console.log(`   ${idx + 1}. ${err.test} - ${err.error}`);
+      });
+    }
+    
     console.log('\n💡 Notes:');
     console.log('   • Required field errors indicate missing mandatory credential data');
     console.log('   • Type/constant mismatches may indicate wrong schema selection for credential type');
+    console.log('   • Negative test failures indicate invalid credentials incorrectly passed validation');
     
     const successRate = Math.round(passedTests/totalTests*100);
     if (successRate >= 40) {

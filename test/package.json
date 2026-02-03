@@ -1,10 +1,11 @@
 {
-  "name": "gs1-template-test",
+  "name": "gs1-credential-test",
   "version": "1.0.0",
-  "description": "Test suite for GS1 Mustache templates",
+  "description": "Test suite for GS1 credential schemas and templates",
   "type": "module",
   "scripts": {
-    "test": "node test-templates.mjs",
+    "test": "npm run test:templates && npm run test:schema",
+    "test:templates": "node test-templates.mjs",
     "test:schema": "node test-schema.mjs"
   },
   "dependencies": {
