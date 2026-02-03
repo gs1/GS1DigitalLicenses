@@ -16,6 +16,8 @@ npm install
 
 ## Running Tests
 
+### Template Tests
+
 Run all template tests:
 
 ```bash
@@ -27,6 +29,24 @@ This will:
 2. Render it with appropriate JSON files from `../jsons/`
 3. Validate that rendering completes without errors
 4. Save rendered SVG files to `./output/` directory
+
+### Schema Validation Tests
+
+Run schema validation tests against local sample credentials:
+
+```bash
+npm run test:schema
+```
+
+This will:
+1. Load credential samples from `../jsons/` directory
+2. Validate each credential against appropriate JSON schemas from `../schemas/`
+3. Report validation results and any schema violations
+
+The test validates all credential types:
+- **License credentials**: GCP, GS1 Prefix, GTIN-8 ID Key, GTIN-8 Prefix, ID Key
+- **Key credentials**: GLN, GTIN, GTIN Batch, GTIN Serial, GRAI, SSCC
+- **Data credentials**: Product Data, Organization Data, GRAI Data, SSCC Data
 
 ## Computing Template Digests
 
