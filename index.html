@@ -290,9 +290,9 @@ function addReferenceNumbers(doc, config) {
       const renderMethod = vc.renderMethod?.find(
         (m) => m.type === "TemplateRenderMethod"
       );
-      if (!renderMethod?.id) return;
+      if (!renderMethod?.template?.id) return;
 
-      const svgRes = await fetch(renderMethod.id);
+      const svgRes = await fetch(renderMethod.template.id);
       const svgText = await svgRes.text();
 
       const svgContainer = container.querySelector(".svg-container");
@@ -340,9 +340,9 @@ function addReferenceNumbers(doc, config) {
       const renderMethod = vc.renderMethod?.find(
         (m) => m.type === "TemplateRenderMethod"
       );
-      if (!renderMethod?.id) return;
+      if (!renderMethod?.template?.id) return;
 
-      const svgRes = await fetch(renderMethod.id);
+      const svgRes = await fetch(renderMethod.template.id);
       const svgText = await svgRes.text();
 
       const svgContainer = container.querySelector(".svg-container");
