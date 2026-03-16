@@ -42,8 +42,12 @@
   <text x="30" y="145" style="font: bold 13px sans-serif; fill: #333;">Alt License Value:</text>
   <text x="210" y="145" id="alt-license-value" style="font: 13px monospace; fill: #0057b8;">{{credentialSubject.alternativeLicenseValue}}</text>
 
+  <!-- Identification Key Type -->
+  <text x="30" y="165" style="font: bold 13px sans-serif; fill: #333;">Identification Key Type:</text>
+  <text x="210" y="165" id="identificationKeyType" style="font: 13px monospace; fill: #0057b8;">{{credentialSubject.identificationKeyType}}</text>
+
   <!-- Description block -->
-  <foreignObject x="30" y="165" width="530" height="110">
+  <foreignObject x="30" y="185" width="530" height="110">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <p id="vc-description" style="
         font-family: sans-serif;
