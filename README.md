@@ -9,8 +9,13 @@ View the document [here](https://gs1.github.io/GS1DigitalLicenses/).
 Its best to view this in a webserver since content is dynamic. I use
 
 ```
-python -m http.server 8000
+python cors_server.py
 ```
+
+I use the resource Override browser plugin and these settings to test locally
+
+* Source URL ```/https:\/\/gs1\.github\.io\/GS1DigitalLicenses\/(.*)/```
+* Destination URL ```http://127.0.0.1:8000/$1``
 
 # Generation
 
