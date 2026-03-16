@@ -300,25 +300,25 @@ function addReferenceNumbers(doc, config) {
 
       const svgDoc = svgContainer.querySelector("svg");
 
-      svgDoc.getElementById("credential-name")?.textContent =
+      svgDoc.getElementById("credential-name").textContent =
         vc.name || "[MISSING]";
-      svgDoc.getElementById("org-name")?.textContent =
+      svgDoc.getElementById("org-name").textContent =
         vc.credentialSubject?.organization?.["gs1:organizationName"] || "[MISSING]";
-      svgDoc.getElementById("org-gln")?.textContent =
+      svgDoc.getElementById("org-gln").textContent =
         vc.credentialSubject?.organization?.["gs1:partyGLN"] || "[MISSING]";
-      svgDoc.getElementById("license-value")?.textContent =
+      svgDoc.getElementById("license-value").textContent =
         vc.credentialSubject?.licenseValue || "[MISSING]";
-      svgDoc.getElementById("alt-license-value")?.textContent =
+      svgDoc.getElementById("alt-license-value").textContent =
         vc.credentialSubject?.alternativeLicenseValue || "N/A";
-      svgDoc.getElementById("identificationKeyType")?.textContent =
+      svgDoc.getElementById("identificationKeyType").textContent =
         vc.credentialSubject?.identificationKeyType || "Any";
-      svgDoc.getElementById("issuer")?.textContent =
+      svgDoc.getElementById("issuer").textContent =
         typeof vc.issuer === "string"
           ? vc.issuer
           : vc.issuer?.name || vc.issuer?.id || "N/A";
-      svgDoc.getElementById("extendsCredential")?.textContent =
+      svgDoc.getElementById("extendsCredential").textContent =
         vc.credentialSubject?.extendsCredential || "None";
-      svgDoc.getElementById("vc-description")?.textContent =
+      svgDoc.getElementById("vc-description").textContent =
         vc.description || "";
 
       container.setAttribute("data-rendered", "true");
@@ -350,17 +350,17 @@ function addReferenceNumbers(doc, config) {
 
       const svgDoc = svgContainer.querySelector("svg");
 
-      svgDoc.getElementById("credential-name")?.textContent =
+      svgDoc.getElementById("credential-name").textContent =
         vc.name || "[MISSING]";
-      svgDoc.getElementById("gs1-key-digital-link")?.textContent =
+      svgDoc.getElementById("gs1-key-digital-link").textContent =
         vc.credentialSubject?.id || "[MISSING]";
-      svgDoc.getElementById("issuer")?.textContent =
+      svgDoc.getElementById("issuer").textContent =
         typeof vc.issuer === "string"
           ? vc.issuer
           : vc.issuer?.name || vc.issuer?.id || "N/A";
-      svgDoc.getElementById("extendsCredential")?.textContent =
+      svgDoc.getElementById("extendsCredential").textContent =
         vc.credentialSubject?.extendsCredential || "None";
-      svgDoc.getElementById("vc-description")?.textContent =
+      svgDoc.getElementById("vc-description").textContent =
         vc.description || "";
 
       container.setAttribute("data-rendered", "true");
