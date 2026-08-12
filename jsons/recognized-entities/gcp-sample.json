@@ -5,12 +5,21 @@
     "https://w3id.org/vc/render-method/v1"
   ],
   "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-sample.jwt",
-  "type": ["VerifiableCredential", "RecognizedEntityCredential"],
+  "type": [
+    "VerifiableCredential",
+    "GS1CompanyPrefixLicenseCredential",
+    "RecognizedEntityCredential"
+  ],
   "issuer": {
     "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
     "name": "GS1 Utopia",
     "type": "RecognizedIssuer",
-    "url": "https://gs1.github.io/GS1DigitalLicenses"
+    "url": "https://gs1.github.io/GS1DigitalLicenses",
+    "recognizedIn": {
+      "id": "https://id.gs1.org/lists/recognized-member-organizations.vc",
+      "type": "RecognizedEntityCredential",
+      "name": "GS1 Register of Member Organizations"
+    }
   },
   "name": "GS1 Company Prefix License",
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 ID Keys.",
@@ -18,6 +27,11 @@
   "credentialSubject": [
     {
       "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+      "organization": {
+        "gs1:partyGLN": "0810159550000",
+        "gs1:organizationName": "Healthy Tots"
+      },
+      "extendsCredential": "https://gs1.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
       "licenseValue": "081015955",
       "alternativeLicenseValue": "81015955",
       "recognizedTo": {
