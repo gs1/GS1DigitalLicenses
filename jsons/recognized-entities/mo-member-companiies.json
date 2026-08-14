@@ -1,0 +1,48 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "type": "VerifiablePresentation",
+  "holder": "did:web:university.example",
+  "verifiableCredential": [
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://www.w3.org/ns/credentials/recognized-entities/v1",
+        "https://www.w3.org/ns/credentials/examples/v2"
+      ],
+      "type": ["VerifiableCredential", "RecognizedEntityCredential"],
+      "issuer": {
+        "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+        "name": "GS1 Utopia",
+        "type": "RecognizedIssuer",
+        "url": "https://gs1.github.io/GS1DigitalLicenses",
+        "recognizedIn": {
+          "id": "https://id.gs1.org/lists/recognized-member-organizations.vc",
+          "type": "RecognizedEntityCredential",
+          "name": "GS1 Register of Member Organizations"
+        }
+      },
+      "validFrom": "2025-01-01T00:00:00Z",
+      "credentialSubject": [
+        {
+          "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+          "type": "RecognizedEntity",
+          "name": "Healthy Tots",
+          "url": "https://www.healthytots.com/",
+          "recognizedTo": {
+            "type": "RecognizedAction",
+            "action": "issue",
+            "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+            "outputValidation": {
+              "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/key.json",
+              "type": "JsonSchema",
+              "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
