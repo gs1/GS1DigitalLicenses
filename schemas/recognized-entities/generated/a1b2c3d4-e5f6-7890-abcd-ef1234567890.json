@@ -26,8 +26,7 @@
           "type": "string",
           "pattern": "01\\/00810159550[0-9]*"
         }
-      },
-      "required": ["gs1DigitalLink"]
+      }
     }
   }
 }

@@ -26,8 +26,7 @@
           "type": "string",
           "pattern": "^08[0-9]*$"
         }
-      },
-      "required": ["licenseValue"]
+      }
     }
   }
 }
