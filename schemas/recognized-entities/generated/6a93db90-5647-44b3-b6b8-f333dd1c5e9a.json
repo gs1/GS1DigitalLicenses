@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GCP 081015955 Key Credential Output Validation Schema",
+  "description": "Validates that Key Credentials issued under GCP 081015955 have a credentialSubject id matching the expected GS1 Digital Link pattern.",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-key-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "oneOf": [
+        { "$ref": "#/$defs/GCP081015955KeySubject" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/GCP081015955KeySubject" }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "GCP081015955KeySubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "01\\/00810159550[0-9]*"
+        }
+      },
+      "required": ["id"]
+    }
+  }
+}

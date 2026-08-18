@@ -5,10 +5,10 @@
     "https://ref.gs1.org/gs1/vc/license-context",
     "https://w3id.org/vc/render-method/v1"
   ],
-  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-sample.jwt",
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/id8-key-license-sample.jwt",
   "type": [
     "VerifiableCredential",
-    "GS1CompanyPrefixLicenseCredential",
+    "GS1IdentificationKeyLicenseCredential",
     "RecognizedEntityCredential"
   ],
   "issuer": {
@@ -17,23 +17,23 @@
     "type": "RecognizedIssuer",
     "url": "https://gs1.github.io/GS1DigitalLicenses",
     "recognizedIn": {
-      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
-      "type": ["RecognizedEntityCredential", "GS1PrefixLicenseCredential"],
-      "name": "GS1 Prefix License 08"
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gs1-8prefix-license-sample.jwt",
+      "type": ["RecognizedEntityCredential", "GS18PrefixLicenseCredential"],
+      "name": "GS1-8 Prefix License 96"
     }
   },
-  "name": "GS1 Company Prefix License",
-  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 ID Keys.",
+  "name": "GS1 ID Key License (GTIN-8)",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is a Verifiable License Key Credential that indicates that a specific GTIN-8 has been licensed to a party under a GS1-8 Prefix.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialStatus": {
-    "id": "https://gs1.github.io/GS1DigitalLicenses/status/gcp#0",
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/id8-key-license#0",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "0",
-    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/gcp"
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/id8-key-license"
   },
   "credentialSchema": {
-    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/base/gs1-company-prefix-license-credential.json",
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/base/gs1-identification-key-license-credential.json",
     "type": "JsonSchema"
   },
   "renderMethod": [
@@ -53,18 +53,19 @@
       "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
       "type": "RecognizedEntity",
       "organization": {
-        "gs1:partyGLN": "0810159550000",
-        "gs1:organizationName": "Healthy Tots"
+        "gs1:partyGLN": "0961234500006",
+        "gs1:organizationName": "Small Widget Co"
       },
-      "licenseValue": "081015955",
-      "alternativeLicenseValue": "81015955",
+      "licenseValue": "00000009612345",
+      "alternativeLicenseValue": "09612345",
+      "identificationKeyType": "GTIN",
       "recognizedTo": [
         {
           "type": "RecognizedAction",
           "action": "issue",
           "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
           "outputValidation": {
-            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/6a93db90-5647-44b3-b6b8-f333dd1c5e9a.json",
+            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/a60be276-9c59-4e83-a729-95d1ac5fea2b.json",
             "type": "JsonSchema",
             "name": "Key Credentials",
             "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"

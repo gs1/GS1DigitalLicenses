@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GS1 Prefix 08 Output Validation Schema",
+  "description": "Validates that GS1 Company Prefix License Credentials issued under GS1 Prefix 08 have a licenseValue starting with 08.",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-company-prefix-license-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "oneOf": [
+        { "$ref": "#/$defs/Prefix08Subject" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Prefix08Subject" }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "Prefix08Subject": {
+      "type": "object",
+      "properties": {
+        "licenseValue": {
+          "type": "string",
+          "pattern": "^08[0-9]*$"
+        }
+      },
+      "required": ["licenseValue"]
+    }
+  }
+}

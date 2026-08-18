@@ -1,0 +1,39 @@
+{
+  "$id": "gs1-common",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GS1 Common Definitions",
+  "description": "Shared GS1-specific definitions used across GS1 credential schemas.",
+  "$defs": {
+    "Organization": {
+      "title": "GS1 Organization",
+      "type": "object",
+      "properties": {
+        "gs1:partyGLN": {
+          "title": "13-digit GLN identifying a legal entity or function.",
+          "type": "string",
+          "pattern": "^\\d{13}$"
+        },
+        "gs1:organizationName": {
+          "title": "The name of the organization expressed in text.",
+          "type": "string"
+        }
+      },
+      "required": ["gs1:partyGLN", "gs1:organizationName"]
+    },
+    "GS1IdentificationKeyTypeCode": {
+      "title": "GS1 Identification Key Type",
+      "type": "string",
+      "enum": [
+        "GTIN", "GLN", "SSCC", "GRAI", "GIAI",
+        "GSRN", "GDTI", "GINC", "GSIN", "GCN",
+        "CPID", "GMN"
+      ]
+    },
+    "GS1DigitalLink": {
+      "title": "GS1 Digital Link URI",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
+    }
+  }
+}

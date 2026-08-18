@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTIN 00810159550000 Key Credential Output Validation Schema",
+  "description": "Validates that Key Credentials for GTIN 00810159550000 have the correct credentialSubject id.",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-key-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "oneOf": [
+        { "$ref": "#/$defs/GTIN00810159550000KeySubject" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/GTIN00810159550000KeySubject" }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "GTIN00810159550000KeySubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "01\\/00810159550[0-9]*"
+        }
+      },
+      "required": ["id"]
+    }
+  }
+}

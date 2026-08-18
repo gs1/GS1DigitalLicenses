@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GS1-8 Prefix 96 ID Key License Output Validation Schema",
+  "description": "Validates that GS1 Identification Key License Credentials issued under GS1-8 Prefix 96 have a licenseValue starting with 096.",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-identification-key-license-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "oneOf": [
+        { "$ref": "#/$defs/Prefix96IdKeySubject" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Prefix96IdKeySubject" }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "Prefix96IdKeySubject": {
+      "type": "object",
+      "properties": {
+        "licenseValue": {
+          "type": "string",
+          "pattern": "^0*96[0-9]*$"
+        }
+      },
+      "required": ["licenseValue", "identificationKeyType"]
+    }
+  }
+}
