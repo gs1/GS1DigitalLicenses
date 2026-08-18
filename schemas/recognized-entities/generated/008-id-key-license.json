@@ -1,15 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GS1 Prefix 08 ID Key License Output Validation",
-  "description": "Validates GS1 ID Key License Credentials issued under GS1 Prefix 08.",
   "allOf": [
-    { "$ref": "../base/gs1-identification-key-license-credential.json" }
+    {
+      "$ref": "../base/gs1-identification-key-license-credential.json"
+    }
   ],
   "properties": {
     "credentialSubject": {
       "contains": {
         "properties": {
-          "licenseValue": { "pattern": "^008[0-9]*$" }
+          "licenseValue": {
+            "pattern": "^008[0-9]*$"
+          }
         }
       }
     }

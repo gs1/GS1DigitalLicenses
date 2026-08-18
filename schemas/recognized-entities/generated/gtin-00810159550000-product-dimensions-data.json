@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GTIN 00810159550000 Product Dimensions and Images Data Credential Schema",
-  "description": "Constrains data credentials issued under a KeyAuthorizationCredential for GTIN 00810159550000 to only include product dimensions and image properties.",
   "allOf": [
     {
       "$ref": "../base/gs1-data-credential.json"
@@ -10,10 +9,14 @@
   "properties": {
     "credentialSubject": {
       "oneOf": [
-        { "$ref": "#/$defs/RestrictedProductDataSubject" },
+        {
+          "$ref": "#/$defs/RestrictedProductDataSubject"
+        },
         {
           "type": "array",
-          "items": { "$ref": "#/$defs/RestrictedProductDataSubject" }
+          "items": {
+            "$ref": "#/$defs/RestrictedProductDataSubject"
+          }
         }
       ]
     }
@@ -22,10 +25,17 @@
     "QuantitativeValue": {
       "type": "object",
       "properties": {
-        "gs1:value": { "type": "string" },
-        "gs1:unitCode": { "type": "string" }
+        "gs1:value": {
+          "type": "string"
+        },
+        "gs1:unitCode": {
+          "type": "string"
+        }
       },
-      "required": ["gs1:value", "gs1:unitCode"]
+      "required": [
+        "gs1:value",
+        "gs1:unitCode"
+      ]
     },
     "RestrictedProductDataSubject": {
       "type": "object",
@@ -60,7 +70,9 @@
           "additionalProperties": false
         }
       },
-      "required": ["product"]
+      "required": [
+        "product"
+      ]
     }
   }
 }

@@ -1,15 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GCP 081015955 Key Credential Output Validation",
-  "description": "Validates Key Credentials issued under GCP 081015955.",
   "allOf": [
-    { "$ref": "../base/gs1-key-credential.json" }
+    {
+      "$ref": "../base/gs1-key-credential.json"
+    }
   ],
   "properties": {
     "credentialSubject": {
       "contains": {
         "properties": {
-          "id": { "pattern": "01\\/00810159550[0-9]*" }
+          "id": {
+            "pattern": "01\\/00810159550[0-9]*"
+          }
         }
       }
     }
