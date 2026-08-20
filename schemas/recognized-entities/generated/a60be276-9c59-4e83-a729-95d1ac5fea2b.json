@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTIN 00810159550000 Key Credential Output Validation",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-key-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "contains": {
+        "properties": {
+          "id": {
+            "pattern": "01\\/00810159550[0-9]*"
+          }
+        }
+      }
+    }
+  }
+}

@@ -19,6 +19,29 @@
   "name": "GS1 Prefix License",
   "description": "FOR DEMONSTRATION PURPOSES ONLY: NOT TO BE USED FOR PRODUCTION GRADE SYSTEMS! A prefix that complies with GS1 Standards (a \u201cGS1 Prefix\u201d) is a unique identification number that is assigned to a Member Organization (By GS1 Global). It\u2019s the foundation of GS1 Standards and can be found in all of the GS1 Identification Numbers.",
   "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialStatus": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/prefix#0",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "0",
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/prefix"
+  },
+  "credentialSchema": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/base/gs1-prefix-license-credential.json",
+    "type": "JsonSchema"
+  },
+  "renderMethod": [
+    {
+      "type": "TemplateRenderMethod",
+      "renderSuite": "svg-mustache",
+      "name": "Web Display",
+      "template": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities/gs1-prefix-license-template.svg",
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiDyW_dw6Fqe5pcj2btbColz_TyMTNTHp31KvW8bmuTt-w"
+      }
+    }
+  ],
   "credentialSubject": [
     {
       "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
@@ -29,16 +52,30 @@
       },
       "licenseValue": "08",
       "alternativeLicenseValue": "8",
-      "recognizedTo": {
-        "type": "RecognizedAction",
-        "action": "issue",
-        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
-        "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/008.json",
-          "type": "JsonSchema",
-          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
+      "recognizedTo": [
+        {
+          "type": "RecognizedAction",
+          "action": "issue",
+          "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
+          "outputValidation": {
+            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/008.json",
+            "type": "JsonSchema",
+            "name": "GS1 Company Prefixes",
+            "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
+          }
+        },
+        {
+          "type": "RecognizedAction",
+          "action": "issue",
+          "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
+          "outputValidation": {
+            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/008-id-key-license.json",
+            "type": "JsonSchema",
+            "name": "ID Key Licenses",
+            "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
+          }
         }
-      }
+      ]
     }
   ]
 }

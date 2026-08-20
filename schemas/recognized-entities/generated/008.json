@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GS1 Prefix 08 Company Prefix Output Validation",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-company-prefix-license-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "contains": {
+        "properties": {
+          "licenseValue": {
+            "pattern": "^08[0-9]*$"
+          }
+        }
+      }
+    }
+  }
+}

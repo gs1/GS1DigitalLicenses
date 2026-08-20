@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GCP 081015955 Key Authorization Output Validation",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-key-authorization-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "contains": {
+        "properties": {
+          "gs1DigitalLink": {
+            "pattern": "01\\/00810159550[0-9]*"
+          }
+        }
+      }
+    }
+  }
+}
