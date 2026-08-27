@@ -57,29 +57,16 @@
     },
     "licenseValue": "081015955",
     "alternativeLicenseValue": "81015955",
-    "recognizedTo": [
-      {
-        "type": "RecognizedAction",
-        "action": "issue",
-        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
-        "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-credential.json",
-          "type": "JsonSchema",
-          "name": "Key Credentials",
-          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-        }
-      },
-      {
-        "type": "RecognizedAction",
-        "action": "issue",
-        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
-        "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-authorization.json",
-          "type": "JsonSchema",
-          "name": "Key Authorization Credentials",
-          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-        }
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+      "outputValidation": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-credential.json",
+        "type": "JsonSchema",
+        "name": "GS1 Key Credentials",
+        "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
       }
-    ]
+    }
   }
 }
