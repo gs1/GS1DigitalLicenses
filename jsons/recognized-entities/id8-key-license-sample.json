@@ -22,7 +22,7 @@
       "name": "GS1-8 Prefix License 96"
     }
   },
-  "name": "GS1 ID Key License (GTIN-8)",
+  "name": "GS1 ID Key License",
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is a Verifiable License Key Credential that indicates that a specific GTIN-8 has been licensed to a party under a GS1-8 Prefix.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialStatus": {
@@ -52,11 +52,11 @@
     "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
     "type": "RecognizedEntity",
     "organization": {
-      "gs1:partyGLN": "0961234500006",
+      "gs1:partyGLN": "0961234500004",
       "gs1:organizationName": "Small Widget Co"
     },
-    "licenseValue": "00000009612345",
-    "alternativeLicenseValue": "09612345",
+    "licenseValue": "00000009612341",
+    "alternativeLicenseValue": "09612341",
     "identificationKeyType": "GTIN",
     "recognizedTo": {
       "type": "RecognizedAction",

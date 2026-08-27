@@ -36,7 +36,7 @@
   <text x="210" y="105" id="org-gln" style="font: 13px monospace; fill: #0057b8;">{{credentialSubject.organization.gs1:partyGLN}}</text>
 
   <!-- Authorized -->
-  <text x="30" y="125" style="font: bold 13px sans-serif; fill: #333;">Authorized:</text>
+  <text x="30" y="125" style="font: bold 13px sans-serif; fill: #333;">Authorizes:</text>
   <text x="210" y="125" style="font: 13px monospace; fill: #0057b8;">{{#credentialSubject.recognizedTo}}<a href="{{outputValidation.id}}"><tspan style="text-decoration: underline; cursor: pointer;">{{outputValidation.name}}</tspan></a> {{/credentialSubject.recognizedTo}}</text>
 
   <!-- License Info -->
@@ -70,12 +70,12 @@
     Issuer:
   </text>
   <a href="{{issuer.recognizedIn.id}}">
-    <text x="30" y="336" style="font: 10px monospace; fill: #0057b8; text-decoration: underline; cursor: pointer;">
+    <text x="30" y="336" style="font: 13px monospace; fill: #0057b8; text-decoration: underline; cursor: pointer;">
       {{issuer.recognizedIn.name}}
     </text>
   </a>
   <text id="issuer" x="560" y="336" text-anchor="end"
-        style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
+        style="font: 13px monospace; fill: #0057b8; text-decoration: underline;">
     {{issuer.name}}
   </text>
 </svg>

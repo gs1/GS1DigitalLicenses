@@ -81,13 +81,13 @@ MO
 MO (to itself, then issues to MC)
  |
  |  id-key-license-sample.json
- |  GS1IdentificationKeyLicenseCredential, GTIN 00810159560111
- |  output: GS1KeyCredentials (00810159560111-key-credential.json)
+ |  GS1IdentificationKeyLicenseCredential, GTIN 00810159560115
+ |  output: GS1KeyCredentials (00810159560115-key-credential.json)
  v
 MC (Healthy Tots)
  |
  |  gtin-key-credential-chain3-sample.json
- |  GS1KeyCredential, GTIN 00810159560111
+ |  GS1KeyCredential, GTIN 00810159560115
  |  subject = MC (self), no delegation
  v
  (end — key assertion only)
@@ -105,13 +105,13 @@ GO (trusted root)
 MO
  |
  |  id8-key-license-sample.json
- |  GS1IdentificationKeyLicenseCredential, GTIN-8 00000009612345
+ |  GS1IdentificationKeyLicenseCredential, GTIN-8 00000009612341
  |  output: GS1KeyCredentials (096-key-credential.json)
  v
 MC (Healthy Tots)
  |
  |  gtin8-key-credential-sample.json
- |  GS1KeyCredential, GTIN-8 00000009612345
+ |  GS1KeyCredential, GTIN-8 00000009612341
  |  subject = MC (self), no delegation
  v
  (end — key assertion only)

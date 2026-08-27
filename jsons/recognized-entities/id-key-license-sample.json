@@ -19,7 +19,7 @@
     "recognizedIn": {
       "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-mo-sample.jwt",
       "type": ["RecognizedEntityCredential", "GS1CompanyPrefixLicenseCredential"],
-      "name": "GS1 Company Prefix License 081015956 (MO Self-Held)"
+      "name": "GS1 MO Company Prefix License 081015956"
     }
   },
   "name": "GS1 ID Key License",
@@ -55,15 +55,15 @@
       "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
-    "licenseValue": "00810159560111",
-    "alternativeLicenseValue": "810159560111",
+    "licenseValue": "00810159560115",
+    "alternativeLicenseValue": "810159560115",
     "identificationKeyType": "GTIN",
     "recognizedTo": {
       "type": "RecognizedAction",
       "action": "issue",
       "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
       "outputValidation": {
-        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159560111-key-credential.json",
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159560115-key-credential.json",
         "type": "JsonSchema",
         "name": "GS1 Key Credentials",
         "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"

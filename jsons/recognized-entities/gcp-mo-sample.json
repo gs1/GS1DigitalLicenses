@@ -22,7 +22,7 @@
       "name": "GS1 Prefix License 08"
     }
   },
-  "name": "GS1 Company Prefix License (MO Self-Held)",
+  "name": "GS1 MO Company Prefix License",
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A self-held GS1 Company Prefix License issued by a GS1 Member Organization to itself for the purpose of issuing GS1 ID Key Licenses.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialStatus": {
