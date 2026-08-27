@@ -154,26 +154,35 @@ def find_entity_subject(parent, issuer_id):
 
 
 def get_output_validation_schemas(subject):
-    """Extract all outputValidation schema paths from a subject's recognizedTo."""
+    """Extract outputValidation schema paths from a subject's recognizedTo.
+
+    Returns a list of (action_name, [schema_paths]) tuples, grouped by action.
+    Within an action, all outputValidation schemas must pass (AND).
+    Across actions, at least one must fully pass (OR).
+    """
     recognized_to = subject.get("recognizedTo")
     if not recognized_to:
         return []
     if isinstance(recognized_to, dict):
         recognized_to = [recognized_to]
 
-    schemas = []
+    actions = []
     for action in recognized_to:
         ov = action.get("outputValidation")
         if not ov:
             continue
         if isinstance(ov, dict):
             ov = [ov]
+        schemas = []
         for validation in ov:
             schema_url = validation.get("id", "")
             schema_file = url_to_schema_path(schema_url)
             if schema_file and schema_file.exists():
                 schemas.append(schema_file)
-    return schemas
+        if schemas:
+            action_name = action.get("name", validation.get("name", "action"))
+            actions.append((action_name, schemas))
+    return actions
 
 
 def schema_validate(credential, schema_path, registry):
@@ -204,22 +213,6 @@ def print_validation_result(passed, rel_path, errors, label, pad=""):
             path = ".".join(str(p) for p in err.absolute_path) or "(root)"
             print(f"{prefix}   - {path}: {err.message}")
 
-
-def print_ov_results(results, indent=0):
-    """Print outputValidation results, showing errors only when none passed."""
-    pad = "  " * indent
-    label = "outputValidation"
-    any_passed = any(passed for passed, _, _ in results)
-    for passed, rel_path, errors in results:
-        if passed:
-            print(f"{pad}  [{label}] PASS  {rel_path}")
-        elif any_passed:
-            print(f"{pad}  [{label}] ---   {rel_path}")
-        else:
-            print(f"{pad}  [{label}] FAIL  {rel_path}  ({len(errors)} error(s))")
-            for err in sorted(errors, key=lambda e: list(e.absolute_path)):
-                path = ".".join(str(p) for p in err.absolute_path) or "(root)"
-                print(f"{pad}  [{label}]   - {path}: {err.message}")
 
 
 def validate_chain(credential, cred_path, registry, depth=0):
@@ -283,15 +276,31 @@ def validate_chain(credential, cred_path, registry, depth=0):
         print(f"{pad}  [entity] PASS  Issuer recognized in {parent_file.relative_to(REPO_ROOT)}")
 
         # Step 3: Validate against parent's outputValidation schemas
-        ov_schemas = get_output_validation_schemas(entity_subject)
-        if ov_schemas:
-            ov_results = []
-            for ov_schema in ov_schemas:
-                result = schema_validate(credential, ov_schema, registry)
-                ov_results.append(result)
-            print_ov_results(ov_results, indent=depth)
-            if not any(passed for passed, _, _ in ov_results):
-                print(f"{pad}  [outputValidation] No outputValidation schema matched")
+        # Within a recognizedTo action: all outputValidations must pass (AND)
+        # Across recognizedTo actions: at least one must fully pass (OR)
+        ov_actions = get_output_validation_schemas(entity_subject)
+        if ov_actions:
+            any_action_passed = False
+            for action_name, schemas in ov_actions:
+                action_results = []
+                for ov_schema in schemas:
+                    result = schema_validate(credential, ov_schema, registry)
+                    action_results.append(result)
+                action_passed = all(passed for passed, _, _ in action_results)
+                if action_passed:
+                    any_action_passed = True
+                for passed, rel_path, errors in action_results:
+                    if passed:
+                        print(f"{pad}  [outputValidation] PASS  {rel_path}")
+                    elif any_action_passed:
+                        print(f"{pad}  [outputValidation] ---   {rel_path}")
+                    else:
+                        print(f"{pad}  [outputValidation] FAIL  {rel_path}  ({len(errors)} error(s))")
+                        for err in sorted(errors, key=lambda e: list(e.absolute_path)):
+                            path = ".".join(str(p) for p in err.absolute_path) or "(root)"
+                            print(f"{pad}  [outputValidation]   - {path}: {err.message}")
+            if not any_action_passed:
+                print(f"{pad}  [outputValidation] No recognizedTo action fully matched")
                 all_passed = False
         else:
             print(f"{pad}  [warn] No outputValidation schemas found in parent's recognizedTo")

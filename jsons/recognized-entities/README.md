@@ -64,7 +64,7 @@ Delegated Data Provider
  (end — data about the GTIN)
 ```
 
-### Chain 3: Prefix License -> Self-Held GCP -> ID Key License -> GS1 Key Credential
+### Chain 3: Prefix License -> Self-Held GCP -> ID Key License -> GS1 Key Credential -> Batch Key Credential
 
 ```
 GO (trusted root)
@@ -88,9 +88,16 @@ MC (Healthy Tots)
  |
  |  gtin-key-credential-chain3-sample.json
  |  GS1KeyCredential, GTIN 00810159560115
- |  subject = MC (self), no delegation
+ |  subject = Delegated Data Provider
+ |  recognizedTo: issue batch/lot key credentials (00810159560115-batch-key-credential.json)
  v
- (end — key assertion only)
+Delegated Data Provider
+ |
+ |  batch-key-credential-chain3-sample.json
+ |  GS1KeyCredential, GTIN 00810159560115 + Batch/Lot ABC123
+ |  gs1DigitalLink: .../01/00810159560115/10/ABC123
+ v
+ (end — batch/lot key assertion)
 ```
 
 ### Chain 4: GTIN-8 Prefix License -> ID Key License -> GS1 Key Credential
