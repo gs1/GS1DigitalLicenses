@@ -42,27 +42,25 @@
       }
     }
   ],
-  "credentialSubject": [
-    {
-      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
-      "type": "RecognizedEntity",
-      "organization": {
-        "gs1:partyGLN": "0614141000005",
-        "gs1:organizationName": "GS1 Utopia"
-      },
-      "licenseValue": "96",
-      "alternativeLicenseValue": "96",
-      "recognizedTo": {
-        "type": "RecognizedAction",
-        "action": "issue",
-        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
-        "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/096-id-key-license.json",
-          "type": "JsonSchema",
-          "name": "ID Key Licenses",
-          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-        }
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "type": "RecognizedEntity",
+    "organization": {
+      "gs1:partyGLN": "0614141000005",
+      "gs1:organizationName": "GS1 Utopia"
+    },
+    "licenseValue": "96",
+    "alternativeLicenseValue": "96",
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
+      "outputValidation": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/096-id-key-license.json",
+        "type": "JsonSchema",
+        "name": "ID Key Licenses",
+        "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
       }
     }
-  ]
+  }
 }

@@ -29,6 +29,11 @@
         "CPID", "GMN"
       ]
     },
+    "GS1IdentificationKey": {
+      "title": "GS1 Identification Key",
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
     "GS1DigitalLink": {
       "title": "GS1 Digital Link URI",
       "type": "string",

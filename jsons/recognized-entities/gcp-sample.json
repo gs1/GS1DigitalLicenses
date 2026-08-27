@@ -48,40 +48,38 @@
       }
     }
   ],
-  "credentialSubject": [
-    {
-      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
-      "type": "RecognizedEntity",
-      "organization": {
-        "gs1:partyGLN": "0810159550000",
-        "gs1:organizationName": "Healthy Tots"
-      },
-      "licenseValue": "081015955",
-      "alternativeLicenseValue": "81015955",
-      "recognizedTo": [
-        {
-          "type": "RecognizedAction",
-          "action": "issue",
-          "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
-          "outputValidation": {
-            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/6a93db90-5647-44b3-b6b8-f333dd1c5e9a.json",
-            "type": "JsonSchema",
-            "name": "Key Credentials",
-            "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-          }
-        },
-        {
-          "type": "RecognizedAction",
-          "action": "issue",
-          "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
-          "outputValidation": {
-            "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/a1b2c3d4-e5f6-7890-abcd-ef1234567890.json",
-            "type": "JsonSchema",
-            "name": "Key Authorization Credentials",
-            "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-          }
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+    "type": "RecognizedEntity",
+    "organization": {
+      "gs1:partyGLN": "0810159550000",
+      "gs1:organizationName": "Healthy Tots"
+    },
+    "licenseValue": "081015955",
+    "alternativeLicenseValue": "81015955",
+    "recognizedTo": [
+      {
+        "type": "RecognizedAction",
+        "action": "issue",
+        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+        "outputValidation": {
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-credential.json",
+          "type": "JsonSchema",
+          "name": "Key Credentials",
+          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "type": "RecognizedAction",
+        "action": "issue",
+        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+        "outputValidation": {
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-authorization.json",
+          "type": "JsonSchema",
+          "name": "Key Authorization Credentials",
+          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
+        }
+      }
+    ]
+  }
 }

@@ -8,11 +8,10 @@
   ],
   "properties": {
     "credentialSubject": {
-      "contains": {
-        "properties": {
-          "licenseValue": {
-            "pattern": "^08[0-9]*$"
-          }
+      "type": "object",
+      "properties": {
+        "licenseValue": {
+          "pattern": "^08[0-9]*$"
         }
       }
     }

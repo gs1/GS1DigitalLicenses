@@ -8,36 +8,6 @@
   ],
   "properties": {
     "credentialSubject": {
-      "oneOf": [
-        {
-          "$ref": "#/$defs/RestrictedProductDataSubject"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/RestrictedProductDataSubject"
-          }
-        }
-      ]
-    }
-  },
-  "$defs": {
-    "QuantitativeValue": {
-      "type": "object",
-      "properties": {
-        "gs1:value": {
-          "type": "string"
-        },
-        "gs1:unitCode": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "gs1:value",
-        "gs1:unitCode"
-      ]
-    },
-    "RestrictedProductDataSubject": {
       "type": "object",
       "properties": {
         "id": {
@@ -69,9 +39,23 @@
           },
           "additionalProperties": false
         }
+      }
+    }
+  },
+  "$defs": {
+    "QuantitativeValue": {
+      "type": "object",
+      "properties": {
+        "gs1:value": {
+          "type": "string"
+        },
+        "gs1:unitCode": {
+          "type": "string"
+        }
       },
       "required": [
-        "product"
+        "gs1:value",
+        "gs1:unitCode"
       ]
     }
   }

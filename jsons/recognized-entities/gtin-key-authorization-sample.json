@@ -48,24 +48,21 @@
       }
     }
   ],
-  "credentialSubject": [
-    {
-      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
-      "type": "RecognizedEntity",
-      "name": "Healthy Tots",
-      "url": "https://www.healthytots.com/",
-      "gs1DigitalLink": "https://id.gs1.org/01/00810159550000",
-      "recognizedTo": {
-        "type": "RecognizedAction",
-        "action": "issue",
-        "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
-        "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/gtin-00810159550000-product-dimensions-data.json",
-          "type": "JsonSchema",
-          "name": "Product Dimensions Data",
-          "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-        }
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_delegated_did",
+    "type": "RecognizedEntity",
+    "name": "Delegated Data Provider",
+    "gs1DigitalLink": "https://id.gs1.org/01/00810159550000",
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+      "outputValidation": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159550000-product-data.json",
+        "type": "JsonSchema",
+        "name": "Product Dimensions Data",
+        "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
       }
     }
-  ]
+  }
 }
