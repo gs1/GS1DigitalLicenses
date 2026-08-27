@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "GS1 Prefix 08 ID Key License Output Validation",
+  "title": "GTIN 00810159560111 Key Authorization Output Validation",
   "allOf": [
     {
-      "$ref": "../base/gs1-identification-key-license-credential.json"
+      "$ref": "../base/gs1-key-authorization-credential.json"
     }
   ],
   "properties": {
     "credentialSubject": {
       "type": "object",
       "properties": {
-        "licenseValue": {
-          "pattern": "^008[0-9]*$"
+        "gs1DigitalLink": {
+          "pattern": "01\\/00810159560111($|\\/)"
         }
       }
     }

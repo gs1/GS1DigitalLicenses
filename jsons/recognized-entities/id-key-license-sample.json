@@ -17,9 +17,9 @@
     "type": "RecognizedIssuer",
     "url": "https://gs1.github.io/GS1DigitalLicenses",
     "recognizedIn": {
-      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
-      "type": ["RecognizedEntityCredential", "GS1PrefixLicenseCredential"],
-      "name": "GS1 Prefix License 08"
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-mo-sample.jwt",
+      "type": ["RecognizedEntityCredential", "GS1CompanyPrefixLicenseCredential"],
+      "name": "GS1 Company Prefix License 081015956 (MO Self-Held)"
     }
   },
   "name": "GS1 ID Key License",
@@ -55,8 +55,8 @@
       "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
-    "licenseValue": "00810159550111",
-    "alternativeLicenseValue": "810159550111",
+    "licenseValue": "00810159560111",
+    "alternativeLicenseValue": "810159560111",
     "identificationKeyType": "GTIN",
     "recognizedTo": [
       {
@@ -64,7 +64,7 @@
         "action": "issue",
         "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
         "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159550111-key-credential.json",
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159560111-key-credential.json",
           "type": "JsonSchema",
           "name": "Key Credentials",
           "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
@@ -75,7 +75,7 @@
         "action": "issue",
         "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
         "outputValidation": {
-          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159550111-key-authorization.json",
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/00810159560111-key-authorization.json",
           "type": "JsonSchema",
           "name": "Key Authorization Credentials",
           "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"

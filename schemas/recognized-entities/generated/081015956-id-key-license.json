@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "GTIN 00810159550111 Key Authorization Output Validation",
+  "title": "GCP 081015956 ID Key License Output Validation",
   "allOf": [
     {
-      "$ref": "../base/gs1-key-authorization-credential.json"
+      "$ref": "../base/gs1-identification-key-license-credential.json"
     }
   ],
   "properties": {
     "credentialSubject": {
       "type": "object",
       "properties": {
-        "gs1DigitalLink": {
-          "pattern": "01\\/00810159550111($|\\/)"
+        "licenseValue": {
+          "pattern": "^0081015956[0-9]*$"
         }
       }
     }
