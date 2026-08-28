@@ -155,3 +155,8 @@ This is impossible with generated schemas: each instance has a unique schema URL
 | Dynamic resolution | `{sourceValue}` resolved at validation time | Pattern baked in at generation time |
 | Content restriction | Handled by separate data schemas | Same |
 | Custom verifier code | None — regex match only | None |
+
+## Work Group Considerations
+
+* This presupposes an AND condition on multiple outputValidations and an OR condition on multiple RecognizedActions.  Is this sufficient for other use cases
+* The dot notation in the field names may need consideration for arrays
