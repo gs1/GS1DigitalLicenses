@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shipping Delegate Data Authorization",
+  "description": "Constrains a delegated key credential so that any JsonSchema referenced in its outputValidation must be from the approved list.",
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "recognizedTo": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "outputValidation": {
+                  "type": "array",
+                  "items": {
+                    "if": { "properties": { "type": { "const": "JsonSchema" } }, "required": ["type"] },
+                    "then": {
+                      "properties": {
+                        "id": {
+                          "enum": [
+                            "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/sample-shipment-data-credential.json"
+                          ]
+                        }
+                      },
+                      "required": ["id"]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "outputValidation": {
+                    "type": "array",
+                    "items": {
+                      "if": { "properties": { "type": { "const": "JsonSchema" } }, "required": ["type"] },
+                      "then": {
+                        "properties": {
+                          "id": {
+                            "enum": [
+                              "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/sample-shipment-data-credential.json"
+                            ]
+                          }
+                        },
+                        "required": ["id"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
