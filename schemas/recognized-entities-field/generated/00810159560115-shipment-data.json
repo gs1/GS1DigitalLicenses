@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTIN 00810159560115 Batch ABC123 Shipment Data Credential Schema",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-data-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "01\\/00810159560115\\/10\\/.+"
+        },
+        "shipment": {
+          "type": "object",
+          "properties": {
+            "gs1:shipDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "gs1:shipmentWeight": {
+              "$ref": "#/$defs/QuantitativeValue"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "QuantitativeValue": {
+      "type": "object",
+      "properties": {
+        "gs1:value": {
+          "type": "string"
+        },
+        "gs1:unitCode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "gs1:value",
+        "gs1:unitCode"
+      ]
+    }
+  }
+}
