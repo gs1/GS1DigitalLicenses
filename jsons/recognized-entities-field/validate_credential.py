@@ -230,6 +230,8 @@ def get_output_validations(subject):
                 schema_file = url_to_schema_path(schema_url)
                 if schema_file and schema_file.exists():
                     items.append(("JsonSchema", schema_file))
+                else:
+                    items.append(("UnresolvableSchema", schema_url))
                 action_name = validation.get("name", action_name)
         if items:
             action_name = action.get("name", action_name)
@@ -297,7 +299,8 @@ def validate_chain(credential, cred_path, registry, depth=0):
         if not passed:
             all_passed = False
     else:
-        print(f"{pad}  [skip] No matching base schema found for types")
+        print(f"{pad}  [base schema] FAIL  No credentialSchema found or schema URL not resolvable")
+        all_passed = False
 
     # Check if the issuer is in the trusted set (§4.1 step 4)
     issuer_id = get_issuer_id(credential)
@@ -337,7 +340,10 @@ def validate_chain(credential, cred_path, registry, depth=0):
                 action_all_pass = True
                 action_output = []
                 for val_type, val_data in items:
-                    if val_type == "JsonSchema":
+                    if val_type == "UnresolvableSchema":
+                        action_all_pass = False
+                        action_output.append(("UnresolvableSchema", False, val_data, None))
+                    elif val_type == "JsonSchema":
                         passed, rel_path, errors = schema_validate(credential, val_data, registry)
                         if not passed:
                             action_all_pass = False
@@ -359,7 +365,10 @@ def validate_chain(credential, cred_path, registry, depth=0):
                 for entry in action_output:
                     kind = entry[0]
                     passed = entry[1]
-                    if kind == "JsonSchema":
+                    if kind == "UnresolvableSchema":
+                        schema_url = entry[2]
+                        print(f"{pad}  [outputValidation] FAIL  Cannot resolve schema: {schema_url}")
+                    elif kind == "JsonSchema":
                         _, _, rel_path, errors = entry
                         if passed:
                             print(f"{pad}  [outputValidation] PASS  {rel_path}")
@@ -383,7 +392,8 @@ def validate_chain(credential, cred_path, registry, depth=0):
                 print(f"{pad}  [outputValidation] No recognizedTo action fully matched")
                 all_passed = False
         else:
-            print(f"{pad}  [warn] No outputValidation rules found in parent's recognizedTo")
+            print(f"{pad}  [outputValidation] FAIL  No outputValidation rules found in parent's recognizedTo")
+            all_passed = False
 
     # Step 4: Recurse — validate the parent credential up the chain
     if not validate_chain(parent, parent_file, registry, depth + 1):
