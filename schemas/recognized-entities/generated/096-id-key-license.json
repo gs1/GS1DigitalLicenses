@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GS1-8 Prefix 96 ID Key License Output Validation",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-identification-key-license-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "licenseValue": {
+          "pattern": "^0*96[0-9]*$"
+        }
+      }
+    }
+  }
+}

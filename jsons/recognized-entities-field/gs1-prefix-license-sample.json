@@ -5,7 +5,7 @@
     "https://ref.gs1.org/gs1/vc/license-context",
     "https://w3id.org/vc/render-method/v1"
   ],
-  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/gs1-prefix-license-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS1PrefixLicenseCredential",
@@ -27,7 +27,7 @@
     "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/prefix"
   },
   "credentialSchema": {
-    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/base/gs1-prefix-license-credential.json",
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-prefix-license-credential.json",
     "type": "JsonSchema"
   },
   "renderMethod": [
@@ -36,7 +36,7 @@
       "renderSuite": "svg-mustache",
       "name": "Web Display",
       "template": {
-        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities/gs1-prefix-license-template.svg",
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities-field/gs1-prefix-license-template.svg",
         "mediaType": "image/svg+xml",
         "digestMultibase": "uEiDyW_dw6Fqe5pcj2btbColz_TyMTNTHp31KvW8bmuTt-w"
       }
@@ -53,14 +53,24 @@
     "alternativeLicenseValue": "8",
     "recognizedTo": {
       "type": "RecognizedAction",
+      "name": "GS1 Company Prefix Licenses",
       "action": "issue",
       "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did",
-      "outputValidation": {
-        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/008.json",
-        "type": "JsonSchema",
-        "name": "GS1 Company Prefixes",
-        "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
-      }
+      "outputValidation": [
+        {
+          "type": "JsonSchema",
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-company-prefix-license-credential.json",
+          "name": "GS1 Company Prefix License Credential"
+        },
+        {
+          "type": "FieldMatch",
+          "sourceField": "credentialSubject.licenseValue",
+          "outputField": {
+            "path": "credentialSubject.licenseValue",
+            "pattern": "^{sourceValue}\\d+"
+          }
+        }
+      ]
     }
   }
 }

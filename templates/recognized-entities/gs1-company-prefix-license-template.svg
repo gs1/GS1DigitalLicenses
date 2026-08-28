@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="370" viewBox="0 0 590 370">
+  <!-- GS1 orange outer decorative border -->
+  <rect x="5" y="5" width="580" height="360" rx="24" ry="24"
+        style="fill: none; stroke: #f36f21; stroke-width: 4; stroke-dasharray: 10 4;" />
+
+  <!-- Inner soft frame -->
+  <rect x="15" y="15" width="560" height="340" rx="12" ry="12"
+        style="fill: #fffdf8; stroke: #ccc; stroke-width: 1.5;" />
+
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="paper-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f5ef; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="15" y="15" width="560" height="340" rx="12" ry="12" fill="url(#paper-bg)" />
+
+  <!-- GS1 Logo -->
+  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
+         x="460" y="30" width="100" height="32" />
+
+  <!-- Credential Title -->
+  <text id="credential-name"
+        x="295" y="55"
+        text-anchor="middle"
+        style="font: bold 20px sans-serif; fill: #000;">
+    {{name}}
+  </text>
+
+  <!-- Organization Info -->
+  <text x="30" y="85" style="font: bold 13px sans-serif; fill: #333;">Organization Name:</text>
+  <text x="210" y="85" id="org-name" style="font: 13px monospace; fill: #0057b8;">{{credentialSubject.organization.gs1:organizationName}}</text>
+
+  <text x="30" y="105" style="font: bold 13px sans-serif; fill: #333;">Organization GLN:</text>
+  <text x="210" y="105" id="org-gln" style="font: 13px monospace; fill: #0057b8;">{{credentialSubject.organization.gs1:partyGLN}}</text>
+
+  <!-- Authorized -->
+  <text x="30" y="125" style="font: bold 13px sans-serif; fill: #333;">Authorizes:</text>
+  <text x="210" y="125" style="font: 13px monospace; fill: #0057b8;">{{#credentialSubject.recognizedTo}}<a href="{{outputValidation.id}}"><tspan style="text-decoration: underline; cursor: pointer;">{{outputValidation.name}}</tspan></a> {{/credentialSubject.recognizedTo}}</text>
+
+  <!-- License Info -->
+  <text x="30" y="145" style="font: bold 13px sans-serif; fill: #333;">License Value:</text>
+  <text x="210" y="145" id="license-value" style="font: 13px monospace; fill: #0057b8;">{{#credentialSubject.identificationKeyType}}{{credentialSubject.identificationKeyType}} {{/credentialSubject.identificationKeyType}}{{credentialSubject.licenseValue}}</text>
+
+  {{#credentialSubject.alternativeLicenseValue}}
+  <text x="30" y="165" style="font: bold 13px sans-serif; fill: #333;">Alt License Value:</text>
+  <text x="210" y="165" id="alt-license-value" style="font: 13px monospace; fill: #0057b8;">{{#credentialSubject.identificationKeyType}}{{credentialSubject.identificationKeyType}} {{/credentialSubject.identificationKeyType}}{{credentialSubject.alternativeLicenseValue}}</text>
+  {{/credentialSubject.alternativeLicenseValue}}
+
+  <!-- Description block -->
+  <foreignObject x="30" y="185" width="530" height="110">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+      <p id="vc-description" style="
+        font-family: sans-serif;
+        font-size: 12px;
+        color: #333;
+        margin: 0;
+        line-height: 1.3em;
+      ">
+        {{description}}
+      </p>
+    </body>
+  </foreignObject>
+
+  <!-- Recognized In (left) / Issuer (right) -->
+  <text x="30" y="320" style="font: bold 13px sans-serif; fill: #333;">Authority:</text>
+  <text id="issuer-label" x="560" y="320" text-anchor="end"
+        style="font: bold 13px sans-serif; fill: #333;">
+    Issuer:
+  </text>
+  <a href="{{issuer.recognizedIn.id}}">
+    <text x="30" y="336" style="font: 13px monospace; fill: #0057b8; text-decoration: underline; cursor: pointer;">
+      {{issuer.recognizedIn.name}}
+    </text>
+  </a>
+  <text id="issuer" x="560" y="336" text-anchor="end"
+        style="font: 13px monospace; fill: #0057b8; text-decoration: underline;">
+    {{issuer.name}}
+  </text>
+</svg>

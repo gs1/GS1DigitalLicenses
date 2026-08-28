@@ -5,7 +5,7 @@
     "https://ref.gs1.org/gs1/vc/license-context",
     "https://w3id.org/vc/render-method/v1"
   ],
-  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-sample.jwt",
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/gcp-mo-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS1CompanyPrefixLicenseCredential",
@@ -22,15 +22,15 @@
       "name": "GS1 Prefix License 08"
     }
   },
-  "name": "GS1 Company Prefix License",
-  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 ID Keys.",
+  "name": "GS1 MO Company Prefix License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A self-held GS1 Company Prefix License issued by a GS1 Member Organization to itself for the purpose of issuing GS1 ID Key Licenses.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialStatus": {
-    "id": "https://gs1.github.io/GS1DigitalLicenses/status/gcp#0",
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/gcp-mo#0",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "0",
-    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/gcp"
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/gcp-mo"
   },
   "credentialSchema": {
     "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/base/gs1-company-prefix-license-credential.json",
@@ -49,22 +49,22 @@
     }
   ],
   "credentialSubject": {
-    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
     "type": "RecognizedEntity",
     "organization": {
-      "gs1:partyGLN": "0810159550000",
-      "gs1:organizationName": "Healthy Tots"
+      "gs1:partyGLN": "0614141000005",
+      "gs1:organizationName": "GS1 Utopia"
     },
-    "licenseValue": "081015955",
-    "alternativeLicenseValue": "81015955",
+    "licenseValue": "081015956",
+    "alternativeLicenseValue": "81015956",
     "recognizedTo": {
       "type": "RecognizedAction",
       "action": "issue",
       "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
       "outputValidation": {
-        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015955-key-credential.json",
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities/generated/081015956-id-key-license.json",
         "type": "JsonSchema",
-        "name": "GS1 Key Credentials",
+        "name": "ID Key Licenses",
         "digestMultibase": "uEiBZl963sknNAHgPyslVv6VztZpfWQoRvW1htfx-UwirFo"
       }
     }
