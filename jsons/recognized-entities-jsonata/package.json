@@ -1,0 +1,8 @@
+{
+  "name": "gs1-re-jsonata-validator",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jsonata": "^2.0.0"
+  }
+}

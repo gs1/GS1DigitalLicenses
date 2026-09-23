@@ -1,0 +1,13 @@
+/* GCP → ID Key License: child licenseValue must extend GCP with zero-padding */
+{
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "licenseValue": {
+          "type": "string",
+          "pattern": "^0*" & credentialSubject.licenseValue & "\\d+$"
+        }
+      }
+    }
+  }
+}
