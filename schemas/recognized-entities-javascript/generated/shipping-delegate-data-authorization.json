@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shipping Delegate Data Authorization",
+  "description": "Constrains a delegated key credential so that any JSON Schema credentialValidator must be from the approved list.",
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "recognizedTo": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "credentialValidator": {
+                  "type": "array",
+                  "items": {
+                    "if": {
+                      "properties": { "mediaType": { "const": "application/schema+json" } },
+                      "required": ["mediaType", "id"]
+                    },
+                    "then": {
+                      "properties": {
+                        "id": {
+                          "enum": [
+                            "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-javascript/base/sample-shipment-data-credential.json"
+                          ]
+                        }
+                      },
+                      "required": ["id"]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "credentialValidator": {
+                    "type": "array",
+                    "items": {
+                      "if": {
+                        "properties": { "mediaType": { "const": "application/schema+json" } },
+                        "required": ["mediaType", "id"]
+                      },
+                      "then": {
+                        "properties": {
+                          "id": {
+                            "enum": [
+                              "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-javascript/base/sample-shipment-data-credential.json"
+                            ]
+                          }
+                        },
+                        "required": ["id"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

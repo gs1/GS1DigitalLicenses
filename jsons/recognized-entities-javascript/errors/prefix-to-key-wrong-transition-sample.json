@@ -1,0 +1,60 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/recognized-entities/v1",
+    "https://ref.gs1.org/gs1/vc/declaration-context",
+    "https://w3id.org/vc/render-method/v1"
+  ],
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-javascript/errors/prefix-to-key-wrong-transition-sample.jwt",
+  "type": [
+    "VerifiableCredential",
+    "GS1KeyCredential",
+    "RecognizedEntityCredential"
+  ],
+  "issuer": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "name": "GS1 Utopia",
+    "type": "RecognizedIssuer",
+    "recognizedIn": {
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-javascript/gs1-prefix-license-sample.jwt",
+      "type": [
+        "RecognizedEntityCredential",
+        "GS1PrefixLicenseCredential"
+      ],
+      "name": "GS1 Prefix License 08"
+    }
+  },
+  "name": "GS1 Key Credential - INVALID (wrong transition from prefix)",
+  "description": "THIS CREDENTIAL SHOULD FAIL VALIDATION. A GS1PrefixLicenseCredential can only issue GS1CompanyPrefixLicenseCredentials, not GS1KeyCredentials directly. This skips the required GCP level in the hierarchy.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialStatus": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/key#80",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "80",
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/key"
+  },
+  "credentialSchema": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-javascript/base/gs1-key-credential.json",
+    "type": "JsonSchema",
+    "digestMultibase": "unHjp50nuRCfhp0BWc0uiBbdAF3v09WwoF9i4wQHjQyQ"
+  },
+  "renderMethod": [
+    {
+      "type": "TemplateRenderMethod",
+      "renderSuite": "svg-mustache",
+      "name": "Web Display",
+      "template": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities-field/gs1-key-credential-template.svg",
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiB0qaIJLY7qy06T2RCKI5Y8uT-YlE5s7sI3u3VYA3f6Ig"
+      }
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+    "type": "RecognizedEntity",
+    "name": "Healthy Tots",
+    "gs1DigitalLink": "https://id.gs1.org/01/00810159550000"
+  }
+}
