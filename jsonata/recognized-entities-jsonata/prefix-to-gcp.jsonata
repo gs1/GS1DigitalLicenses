@@ -1,0 +1,13 @@
+/* Prefix License → GCP: child licenseValue must extend parent prefix with additional digits */
+{
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "licenseValue": {
+          "type": "string",
+          "pattern": "^" & credentialSubject.licenseValue & "\\d+"
+        }
+      }
+    }
+  }
+}

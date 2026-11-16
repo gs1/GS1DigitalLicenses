@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTIN 00810159550000 Product Dimensions and Images Data Credential Schema",
+  "allOf": [
+    {
+      "$ref": "../base/gs1-data-credential.json"
+    }
+  ],
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "01\\/00810159550000"
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "gs1:grossWeight": {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            "gs1:image": {
+              "type": "string",
+              "format": "uri"
+            },
+            "gs1:inPackageDiameter": {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            "gs1:inPackageHeight": {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            "gs1:inPackageWidth": {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            "gs1:inPackageDepth": {
+              "$ref": "#/$defs/QuantitativeValue"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "QuantitativeValue": {
+      "type": "object",
+      "properties": {
+        "gs1:value": {
+          "type": "string"
+        },
+        "gs1:unitCode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "gs1:value",
+        "gs1:unitCode"
+      ]
+    }
+  }
+}

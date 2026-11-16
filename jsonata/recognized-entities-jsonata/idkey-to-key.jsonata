@@ -1,0 +1,13 @@
+/* ID Key License → Key Credential: child gs1DigitalLink must use AI 01 with the licensed GTIN */
+{
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "gs1DigitalLink": {
+          "type": "string",
+          "pattern": "^https://id\\.gs1\\.org/01/" & credentialSubject.licenseValue
+        }
+      }
+    }
+  }
+}

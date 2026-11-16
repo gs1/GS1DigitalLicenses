@@ -1,0 +1,13 @@
+/* GS1-8 Prefix License → ID Key License: child licenseValue must be zero-padded prefix + digits */
+{
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "licenseValue": {
+          "type": "string",
+          "pattern": "^0+" & credentialSubject.licenseValue & "\\d+$"
+        }
+      }
+    }
+  }
+}

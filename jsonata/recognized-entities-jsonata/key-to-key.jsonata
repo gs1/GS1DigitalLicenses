@@ -1,0 +1,16 @@
+/* Key Credential → Key Credential: child gs1DigitalLink must narrow scope under parent's */
+(
+  $escaped := $replace(credentialSubject.gs1DigitalLink, ".", "\\.");
+  {
+    "properties": {
+      "credentialSubject": {
+        "properties": {
+          "gs1DigitalLink": {
+            "type": "string",
+            "pattern": "^" & $escaped & "/10/"
+          }
+        }
+      }
+    }
+  }
+)

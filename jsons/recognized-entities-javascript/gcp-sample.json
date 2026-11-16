@@ -1,0 +1,79 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/recognized-entities/v1",
+    "https://ref.gs1.org/gs1/vc/license-context",
+    "https://w3id.org/vc/render-method/v1"
+  ],
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-javascript/gcp-sample.jwt",
+  "type": [
+    "VerifiableCredential",
+    "GS1CompanyPrefixLicenseCredential",
+    "RecognizedEntityCredential"
+  ],
+  "issuer": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "name": "GS1 Utopia",
+    "type": "RecognizedIssuer",
+    "url": "https://gs1.github.io/GS1DigitalLicenses",
+    "recognizedIn": {
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-javascript/gs1-prefix-license-sample.jwt",
+      "type": [
+        "RecognizedEntityCredential",
+        "GS1PrefixLicenseCredential"
+      ],
+      "name": "GS1 Prefix License 08"
+    }
+  },
+  "name": "GS1 Company Prefix License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 ID Keys.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialStatus": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/gcp#0",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "0",
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/gcp"
+  },
+  "credentialSchema": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-javascript/base/gs1-company-prefix-license-credential.json",
+    "type": "JsonSchema",
+    "digestMultibase": "urYup-2K9KD2mVSMTme3E_L_3g_zmu9WMEE4KKZX8knQ"
+  },
+  "renderMethod": [
+    {
+      "type": "TemplateRenderMethod",
+      "renderSuite": "svg-mustache",
+      "name": "Web Display",
+      "template": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities-field/gs1-company-prefix-license-template.svg",
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiB0qaIJLY7qy06T2RCKI5Y8uT-YlE5s7sI3u3VYA3f6Ig"
+      }
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+    "type": "RecognizedEntity",
+    "organization": {
+      "gs1:partyGLN": "0810159550000",
+      "gs1:organizationName": "Healthy Tots"
+    },
+    "licenseValue": "081015955",
+    "alternativeLicenseValue": "81015955",
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "name": "GS1 Key Credentials",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+      "credentialValidator": [
+        {
+          "id": "https://gs1.github.io/GS1DigitalLicenses/validators/gs1-license-validation.mjs",
+          "type": "CredentialValidator",
+          "mediaType": "text/javascript",
+          "digestMultibase": "uEiB0qaIJLY7qy06T2RCKI5Y8uT-YlE5s7sI3u3VYA3f6Ig"
+        }
+      ]
+    }
+  }
+}

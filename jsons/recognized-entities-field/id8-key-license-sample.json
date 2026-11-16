@@ -1,0 +1,86 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/recognized-entities/v1",
+    "https://ref.gs1.org/gs1/vc/license-context",
+    "https://w3id.org/vc/render-method/v1"
+  ],
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/id8-key-license-sample.jwt",
+  "type": [
+    "VerifiableCredential",
+    "GS1IdentificationKeyLicenseCredential",
+    "RecognizedEntityCredential"
+  ],
+  "issuer": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "name": "GS1 Utopia",
+    "type": "RecognizedIssuer",
+    "url": "https://gs1.github.io/GS1DigitalLicenses",
+    "recognizedIn": {
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/gs1-8prefix-license-sample.jwt",
+      "type": [
+        "RecognizedEntityCredential",
+        "GS18PrefixLicenseCredential"
+      ],
+      "name": "GS1-8 Prefix License 96"
+    }
+  },
+  "name": "GS1 ID Key License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is a Verifiable License Key Credential that indicates that a specific GTIN-8 has been licensed to a party under a GS1-8 Prefix.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialStatus": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/id8-key-license#0",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "0",
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/id8-key-license"
+  },
+  "credentialSchema": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-identification-key-license-credential.json",
+    "type": "JsonSchema"
+  },
+  "renderMethod": [
+    {
+      "type": "TemplateRenderMethod",
+      "renderSuite": "svg-mustache",
+      "name": "Web Display",
+      "template": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities-field/gs1-company-prefix-license-template.svg",
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiDyW_dw6Fqe5pcj2btbColz_TyMTNTHp31KvW8bmuTt-w"
+      }
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
+    "type": "RecognizedEntity",
+    "organization": {
+      "gs1:partyGLN": "0961234500004",
+      "gs1:organizationName": "Small Widget Co"
+    },
+    "licenseValue": "00000009612341",
+    "alternativeLicenseValue": "09612341",
+    "identificationKeyType": "GTIN",
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "name": "GS1 Key Credentials",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+      "outputValidation": [
+        {
+          "type": "JsonSchema",
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-key-credential.json",
+          "name": "GS1 Key Credential"
+        },
+        {
+          "type": "FieldMatch",
+          "sourceField": "credentialSubject.licenseValue",
+          "outputField": {
+            "path": "credentialSubject.gs1DigitalLink",
+            "pattern": "^https://id\\.gs1\\.org/01/{sourceValue}"
+          }
+        }
+      ]
+    }
+  }
+}

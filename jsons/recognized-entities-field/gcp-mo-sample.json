@@ -1,0 +1,85 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/recognized-entities/v1",
+    "https://ref.gs1.org/gs1/vc/license-context",
+    "https://w3id.org/vc/render-method/v1"
+  ],
+  "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/gcp-mo-sample.jwt",
+  "type": [
+    "VerifiableCredential",
+    "GS1CompanyPrefixLicenseCredential",
+    "RecognizedEntityCredential"
+  ],
+  "issuer": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "name": "GS1 Utopia",
+    "type": "RecognizedIssuer",
+    "url": "https://gs1.github.io/GS1DigitalLicenses",
+    "recognizedIn": {
+      "id": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/gs1-prefix-license-sample.jwt",
+      "type": [
+        "RecognizedEntityCredential",
+        "GS1PrefixLicenseCredential"
+      ],
+      "name": "GS1 Prefix License 08"
+    }
+  },
+  "name": "GS1 MO Company Prefix License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A self-held GS1 Company Prefix License issued by a GS1 Member Organization to itself for the purpose of issuing GS1 ID Key Licenses.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialStatus": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/status/gcp-mo#0",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "0",
+    "statusListCredential": "https://gs1.github.io/GS1DigitalLicenses/status/gcp-mo"
+  },
+  "credentialSchema": {
+    "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-company-prefix-license-credential.json",
+    "type": "JsonSchema"
+  },
+  "renderMethod": [
+    {
+      "type": "TemplateRenderMethod",
+      "renderSuite": "svg-mustache",
+      "name": "Web Display",
+      "template": {
+        "id": "https://gs1.github.io/GS1DigitalLicenses/templates/recognized-entities-field/gs1-company-prefix-license-template.svg",
+        "mediaType": "image/svg+xml",
+        "digestMultibase": "uEiDyW_dw6Fqe5pcj2btbColz_TyMTNTHp31KvW8bmuTt-w"
+      }
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "type": "RecognizedEntity",
+    "organization": {
+      "gs1:partyGLN": "0614141000005",
+      "gs1:organizationName": "GS1 Utopia"
+    },
+    "licenseValue": "081015956",
+    "alternativeLicenseValue": "81015956",
+    "recognizedTo": {
+      "type": "RecognizedAction",
+      "name": "GS1 ID Key Licenses",
+      "action": "issue",
+      "recognizedBy": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+      "outputValidation": [
+        {
+          "type": "JsonSchema",
+          "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-field/base/gs1-identification-key-license-credential.json",
+          "name": "GS1 Identification Key License Credential"
+        },
+        {
+          "type": "FieldMatch",
+          "sourceField": "credentialSubject.licenseValue",
+          "outputField": {
+            "path": "credentialSubject.licenseValue",
+            "pattern": "^0*{sourceValue}\\d+$"
+          }
+        }
+      ]
+    }
+  }
+}

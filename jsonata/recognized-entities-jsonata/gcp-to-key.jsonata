@@ -1,0 +1,13 @@
+/* GCP → Key Credential: child gs1DigitalLink must contain GCP under a GS1 AI */
+{
+  "properties": {
+    "credentialSubject": {
+      "properties": {
+        "gs1DigitalLink": {
+          "type": "string",
+          "pattern": "^https://id\\.gs1\\.org/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)/0*" & credentialSubject.licenseValue & "\\d+"
+        }
+      }
+    }
+  }
+}
