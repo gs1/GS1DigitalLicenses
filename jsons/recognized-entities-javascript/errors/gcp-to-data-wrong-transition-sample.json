@@ -36,7 +36,7 @@
   "credentialSchema": {
     "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/recognized-entities-javascript/base/sample-dimension-and-image-data-credential.json",
     "type": "JsonSchema",
-    "digestMultibase": "uHXGWMG3awWyGW9J4gCEpu2ILeo1XFkVsFdUhqQANOaU"
+    "digestMultibase": "uEiAr94nZGv9-ePAu2qvhblARu6bqYpwA8YnEThkkPe6tsg"
   },
   "renderMethod": [
     {
@@ -51,6 +51,7 @@
     }
   ],
   "credentialSubject": {
+    "keyAuthorization": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-javascript/gcp-sample.jwt",
     "id": "https://id.gs1.org/01/00810159550000",
     "product": {
       "gs1:grossWeight": {
