@@ -52,6 +52,7 @@
     }
   ],
   "credentialSubject": {
+    "extendsCredential": "https://gs1.github.io/GS1DigitalLicenses/samples/recognized-entities-field/gcp-mo-sample.jwt",
     "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mc_did",
     "type": "RecognizedEntity",
     "organization": {

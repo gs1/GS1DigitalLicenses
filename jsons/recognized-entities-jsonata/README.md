@@ -2,6 +2,10 @@
 
 These samples demonstrate the GS1 trust chain using the W3C Recognized Entities 1.0 specification, with **JSONata-generated schemas** for cross-document field constraints instead of the FieldMatch output validation type.
 
+## Legacy chain link
+
+A credential that has a parent carries the legacy GS1 chain property on `credentialSubject`, set to the same URL as `issuer.recognizedIn.id`. Licenses and key credentials use `extendsCredential`. Data credentials use `keyAuthorization`. One issued credential can be followed by either a recognized-entities verifier or a legacy verifier. Prefix licenses are the trust root and have no parent link.
+
 ## How It Works
 
 Where the FieldMatch variant uses a custom `type: "FieldMatch"` output validation, this variant uses `type: "Jsonata"` with a `generator` field pointing to a JSONata expression. Static schemas use `type: "JsonSchema"` with an `id` field as before:
